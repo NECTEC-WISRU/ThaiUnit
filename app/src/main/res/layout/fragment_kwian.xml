@@ -1,0 +1,135 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.example.user.unitconverternew.Kwian">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center"
+        android:background="@color/light_gray">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="เลือกขนาด"
+            android:id="@+id/textView16"
+            android:textSize="@dimen/text_body_big"
+            android:gravity="fill_horizontal|center_vertical"
+            android:background="@color/light_yellow"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/imageView7"
+                        android:src="@drawable/kwian1"
+                        android:paddingTop="50dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="กระสอบ (30 ก.ก.)"
+                        android:id="@+id/textView8"
+                        android:textSize="@dimen/text_body_choice"
+                        android:textColor="@color/dark_blue"
+                        android:gravity="clip_vertical|center_horizontal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="250dp"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="200dp"
+                        android:id="@+id/imageView8"
+                        android:src="@drawable/kwian1"
+                        android:paddingTop="25dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="กระสอบ (50 ก.ก.)"
+                        android:id="@+id/textView9"
+                        android:textSize="@dimen/text_body_choice"
+                        android:textColor="@color/dark_blue"
+                        android:gravity="clip_vertical|center_horizontal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="1">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/imageView9"
+                        android:src="@drawable/kwian1"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="กระสอบ (100 ก.ก.)"
+                        android:id="@+id/textView10"
+                        android:textSize="@dimen/text_body_choice"
+                        android:textColor="@color/dark_blue"
+                        android:gravity="clip_vertical|center_horizontal"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/imageView10"
+                        android:src="@drawable/plus"
+                        android:padding="30dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="อื่นๆ"
+                        android:id="@+id/textView11"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="@dimen/text_body_choice"
+                        android:gravity="clip_vertical|center_horizontal"/>
+                </LinearLayout>
+
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</FrameLayout>
