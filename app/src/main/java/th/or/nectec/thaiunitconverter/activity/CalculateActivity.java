@@ -36,8 +36,8 @@ public class CalculateActivity extends Activity {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(CalculateActivity.this, getResources().getStringArray(R.array.thai_unit)[i], Toast.LENGTH_SHORT).show();
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                Toast.makeText(CalculateActivity.this, getResources().getStringArray(R.array.thai_unit)[position], Toast.LENGTH_SHORT).show();
             }
 
             @Override
