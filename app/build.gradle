@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.example.user.unitconverternew"
+        applicationId "th.or.nectec.thaiunitconverter"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

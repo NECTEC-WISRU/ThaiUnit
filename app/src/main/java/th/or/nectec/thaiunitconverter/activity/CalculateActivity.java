@@ -1,4 +1,4 @@
-package com.example.user.unitconverternew;
+package th.or.nectec.thaiunitconverter.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,12 +9,13 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import th.or.nectec.thaiunitconverter.R;
 
 /**
  * Created by User on 7/10/2558.
  */
-public class Krasop extends Activity {
+public class CalculateActivity extends Activity {
 
     private Spinner spinner;
 
@@ -24,11 +25,9 @@ public class Krasop extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.krasop);
+        setContentView(R.layout.calculate_activity);
 
         spinner = (Spinner) findViewById(R.id.thai_spinner);
-
-        //createThaiUnitData();
 
         // Adapter ตัวแรก
         ArrayAdapter<String> adapterThai = new ArrayAdapter<String>
@@ -38,7 +37,7 @@ public class Krasop extends Activity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(Krasop.this, getResources().getStringArray(R.array.thai_unit)[i], Toast.LENGTH_SHORT).show();
+                Toast.makeText(CalculateActivity.this, getResources().getStringArray(R.array.thai_unit)[i], Toast.LENGTH_SHORT).show();
             }
 
             @Override

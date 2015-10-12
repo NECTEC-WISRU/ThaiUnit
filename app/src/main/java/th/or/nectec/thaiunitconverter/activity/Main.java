@@ -1,16 +1,17 @@
-package com.example.user.unitconverternew;
+package th.or.nectec.thaiunitconverter.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+
+import th.or.nectec.thaiunitconverter.fragment.Aum;
+import th.or.nectec.thaiunitconverter.fragment.Krasop;
+import th.or.nectec.thaiunitconverter.fragment.Kwian;
+import th.or.nectec.thaiunitconverter.fragment.Peep;
+import th.or.nectec.thaiunitconverter.R;
+import th.or.nectec.thaiunitconverter.fragment.Tung;
 
 public class Main extends AppCompatActivity {
 
@@ -20,8 +21,7 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
-
-
+        
         krasop = (LinearLayout) findViewById(R.id.krasopButton);
         kwian = (LinearLayout) findViewById(R.id.kwianButton);
         aum = (LinearLayout) findViewById(R.id.aumButton);

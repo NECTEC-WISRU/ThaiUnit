@@ -1,32 +1,37 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.example.user.unitconverternew.Kwian">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="th.or.nectec.thaiunitconverter.fragment.Kwian"
+    android:weightSum="1">
 
     <!-- TODO: Update blank fragment layout -->
 
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/light_gray">
+        android:orientation="horizontal"
+        android:background="@color/light_yellow">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="เลือกขนาด"
             android:id="@+id/textView16"
-            android:textSize="@dimen/text_body_big"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_header_text"
             android:gravity="fill_horizontal|center_vertical"
-            android:background="@color/light_yellow"/>
+            android:text="เลือกขนาด"
+            android:textSize="@dimen/text_body_big"
+            android:layout_marginLeft="@dimen/layout_marginLeft" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/layout_marginTop">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -39,97 +44,85 @@
                 android:layout_weight="1">
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="200dp"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:id="@+id/imageView7"
-                        android:src="@drawable/kwian1"
-                        android:paddingTop="50dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:text="กระสอบ (30 ก.ก.)"
-                        android:id="@+id/textView8"
-                        android:textSize="@dimen/text_body_choice"
-                        android:textColor="@color/dark_blue"
-                        android:gravity="clip_vertical|center_horizontal" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="200dp"
                     android:layout_height="250dp"
-                    android:layout_column="1">
+                    android:layout_column="1"
+                    android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="200dp"
-                        android:id="@+id/imageView8"
-                        android:src="@drawable/kwian1"
-                        android:paddingTop="25dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:text="กระสอบ (50 ก.ก.)"
-                        android:id="@+id/textView9"
-                        android:textSize="@dimen/text_body_choice"
-                        android:textColor="@color/dark_blue"
-                        android:gravity="clip_vertical|center_horizontal"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_column="1">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
                         android:id="@+id/imageView9"
-                        android:src="@drawable/kwian1"/>
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/kwian1" />
 
                     <TextView
+                        android:id="@+id/textView10"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:text="กระสอบ (100 ก.ก.)"
-                        android:id="@+id/textView10"
-                        android:textSize="@dimen/text_body_choice"
+                        android:gravity="clip_vertical|center_horizontal"
+                        android:text="เกวียน (1000 ก.ก.)"
                         android:textColor="@color/dark_blue"
-                        android:gravity="clip_vertical|center_horizontal"/>
+                        android:textSize="@dimen/text_body_choice" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
-                    android:layout_column="3">
+                    android:layout_column="1"
+                    android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/imageView10"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:id="@+id/imageView10"
-                        android:src="@drawable/plus"
-                        android:padding="30dp" />
+                        android:padding="30dp"
+                        android:src="@drawable/plus" />
 
                     <TextView
+                        android:id="@+id/textView11"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
+                        android:gravity="clip_vertical|center_horizontal"
                         android:text="อื่นๆ"
-                        android:id="@+id/textView11"
                         android:textColor="@color/dark_blue"
-                        android:textSize="@dimen/text_body_choice"
-                        android:gravity="clip_vertical|center_horizontal"/>
+                        android:textSize="@dimen/text_body_choice" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_column="3"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
 
             </TableRow>
         </TableLayout>
     </LinearLayout>
 
-</FrameLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/light_yellow">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_header_text"
+            android:text="จำนวน"
+            android:id="@+id/textView17"
+            android:textSize="@dimen/text_body_big"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:gravity="fill_horizontal|center_vertical" />
+    </LinearLayout>
+
+</LinearLayout>
