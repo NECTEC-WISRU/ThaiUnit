@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">UnitConverterNew</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="thai_unit">
+        <item>กระสอบ</item>
+        <item>ถัง</item>
+        <item>อุ้ม</item>
+        <item>ปี๊บ</item>
+        <item>เกวียน</item>
+    </string-array>
+</resources>
