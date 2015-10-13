@@ -37,10 +37,10 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        /*krasop.setOnClickListener(new View.OnClickListener() {
+        krasop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Krasop.class);
+                Intent i = new Intent(getApplicationContext(), CalculateActivity.class);
                 startActivity(i);
             }
         });
@@ -49,7 +49,7 @@ public class Main extends AppCompatActivity {
         aum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Aum.class);
+                Intent i = new Intent(getApplicationContext(), CalculateActivity.class);
                 startActivity(i);
             }
         });
@@ -57,7 +57,7 @@ public class Main extends AppCompatActivity {
         tung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Tung.class);
+                Intent i = new Intent(getApplicationContext(), CalculateActivity.class);
                 startActivity(i);
             }
         });
@@ -65,10 +65,10 @@ public class Main extends AppCompatActivity {
         peep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Peep.class);
+                Intent i = new Intent(getApplicationContext(), CalculateActivity.class);
                 startActivity(i);
             }
-        });*/
+        });
     }
 }
 
