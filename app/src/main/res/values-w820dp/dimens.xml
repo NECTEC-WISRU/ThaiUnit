@@ -3,4 +3,30 @@
          (such as screen margins) for screens with more than 820dp of available width. This
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively). -->
     <dimen name="activity_horizontal_margin">64dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="layout_height">120dp</dimen>
+    <dimen name="layout_width">350dp</dimen>
+    <dimen name="layout_header_height">300dp</dimen>
+
+    <dimen name="layout_header_text">70dp</dimen>
+
+    <dimen name="layout_image_width">200dp</dimen>
+
+    <dimen name="layout_marginBottom">10dp</dimen>
+    <dimen name="layout_marginTop">10dp</dimen>
+    <dimen name="layout_marginBottom_header">15dp</dimen>
+    <dimen name="layout_marginRight">10dp</dimen>
+    <dimen name="layout_marginLeft">10dp</dimen>
+
+    <dimen name="text_body">25dp</dimen>
+    <dimen name="text_body_big">30dp</dimen>
+    <dimen name="text_body_choice">23dp</dimen>
+    <dimen name="text_body_answer">30dp</dimen>
+    <dimen name="text_body__button">25dp</dimen>
+
+    <dimen name="layout_table_row_height">100dp</dimen>
+    <dimen name="text_button_width">370dp</dimen>
+    <dimen name="text_button_height">60dp</dimen>
+    <dimen name="layout_button_margin_all">15dp</dimen>
 </resources>
