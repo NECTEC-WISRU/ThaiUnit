@@ -21,14 +21,23 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
-        
+
         krasop = (LinearLayout) findViewById(R.id.krasopButton);
         kwian = (LinearLayout) findViewById(R.id.kwianButton);
         aum = (LinearLayout) findViewById(R.id.aumButton);
         tung = (LinearLayout) findViewById(R.id.tungButton);
         peep = (LinearLayout) findViewById(R.id.peepButton);
 
-        krasop.setOnClickListener(new View.OnClickListener() {
+
+        kwian.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), CalculateActivity.class);
+                startActivity(i);
+            }
+        });
+
+        /*krasop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Krasop.class);
@@ -36,13 +45,6 @@ public class Main extends AppCompatActivity {
             }
         });
 
-        kwian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Kwian.class);
-                startActivity(i);
-            }
-        });
 
         aum.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +68,7 @@ public class Main extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), Peep.class);
                 startActivity(i);
             }
-        });
+        });*/
     }
 }
 
