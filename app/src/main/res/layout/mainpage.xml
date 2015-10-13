@@ -6,21 +6,26 @@
     android:gravity="fill_vertical"
     android:weightSum="1">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_header_height"
-        android:background="@color/black"
-        android:layout_marginBottom="@dimen/layout_marginBottom_header">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:id="@+id/imageView3"
             android:src="@drawable/rice"
             android:scaleType="centerCrop" />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_body"
+            android:paddingLeft="@dimen/layout_marginLeft"
+            android:paddingTop="@dimen/layout_marginTop"
+            android:textColor="@color/white"
+            android:id="@+id/textView7" />
+    </FrameLayout>
 
     <TextView
         android:layout_width="fill_parent"

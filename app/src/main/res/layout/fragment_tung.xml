@@ -1,9 +1,203 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="th.or.nectec.thaiunitconverter.fragment.Tung">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:weightSum="1"
+    >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/layout_marginBottom"
 
-</FrameLayout>
+        android:gravity="center_vertical"
+        android:text="เลือกขนาด"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_body_big"
+        android:background="@color/light_purple"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/horizontalScrollView"
+        android:layout_gravity="center_horizontal" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:id="@+id/tung_10kg"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/layout_marginRight">
+
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/tung"
+                    android:scaleType="fitEnd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="ถัง (10 ก.ก.)"
+                    android:textSize="@dimen/text_body_choice"
+                    android:textColor="@color/dark_blue"
+                    android:gravity="clip_vertical|center_horizontal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:id="@+id/tung_15kg"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/layout_marginRight">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/tung"
+                    android:scaleType="fitEnd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="ถัง (15 ก.ก.)"
+                    android:textSize="@dimen/text_body_choice"
+                    android:textColor="@color/dark_blue"
+                    android:gravity="clip_vertical|center_horizontal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_column="3"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/plus"
+                    android:padding="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="อื่นๆ"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/text_body_choice"
+                    android:gravity="clip_vertical|center_horizontal"/>
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/layout_marginBottom"
+        android:layout_marginTop="@dimen/layout_marginTop"
+        android:gravity="center_vertical"
+        android:text="จำนวน"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_body_big"
+        android:background="@color/light_purple"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:weightSum="1"
+        android:layout_weight="0.08">
+
+        <EditText
+            android:layout_width="123dp"
+            android:layout_height="wrap_content"
+            android:inputType="number|numberDecimal"
+            android:ems="10"
+            android:id="@+id/rice_quantity"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_body"
+            android:layout_weight="0.07"
+            android:numeric="decimal"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="กระสอบ"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_body"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="คำนวณน้ำหนักข้าวสด"
+        android:id="@+id/calculate_wet_button"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/text_body"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        android:visibility="visible"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/layout_marginBottom"
+            android:layout_marginTop="@dimen/layout_marginTop"
+            android:gravity="center_vertical"
+            android:text="น้ำหนักข้าวสด"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_body_big"
+            android:background="@color/light_purple"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/weight_wet_sumary"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/text_body"
+            android:gravity="center"
+            android:layout_weight="0.97" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="คำนวณน้ำหนักข้าวแห้ง"
+            android:id="@+id/calculate_dry_button"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/text_body"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+
+</LinearLayout>
