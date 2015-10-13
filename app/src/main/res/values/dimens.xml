@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="layout_height">120dp</dimen>
+    <dimen name="layout_height">100dp</dimen>
     <dimen name="layout_width">350dp</dimen>
     <dimen name="layout_header_height">300dp</dimen>
 
@@ -19,7 +19,7 @@
 
     <dimen name="text_body">20dp</dimen>
     <dimen name="text_body_big">25dp</dimen>
-    <dimen name="text_body_choice">20dp</dimen>
+    <dimen name="text_body_choice">17dp</dimen>
     <dimen name="text_body_answer">30dp</dimen>
     <dimen name="text_body__button">20dp</dimen>
 

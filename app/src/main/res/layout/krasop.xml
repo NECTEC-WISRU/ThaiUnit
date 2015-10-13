@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    >
 
 
     <TextView
@@ -35,19 +36,21 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:id="@+id/krasop_30kg">
+                android:id="@+id/krasop_30kg"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/layout_marginRight">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
                     android:src="@drawable/krasop"
-                    android:paddingTop="50dp"/>
+                    android:scaleType="fitEnd" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="กระสอบ (30 ก.ก.)"
                     android:textSize="@dimen/text_body_choice"
@@ -57,19 +60,21 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:id="@+id/krasop_50kg">
+                android:id="@+id/krasop_50kg"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/layout_marginRight">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
+                    android:layout_width="125dp"
+                    android:layout_height="150dp"
                     android:src="@drawable/krasop"
-                    android:paddingTop="25dp"/>
+                    android:scaleType="fitEnd" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="กระสอบ (50 ก.ก.)"
                     android:textSize="@dimen/text_body_choice"
@@ -79,18 +84,21 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_column="1"
-                android:id="@+id/krasop_100kg">
+                android:id="@+id/krasop_100kg"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/layout_marginRight">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:src="@drawable/krasop"/>
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/krasop"
+                    android:scaleType="fitEnd" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="กระสอบ (100 ก.ก.)"
                     android:textSize="@dimen/text_body_choice"
@@ -100,18 +108,19 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:layout_column="3">
+                android:layout_column="3"
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
                     android:src="@drawable/plus"
                     android:padding="30dp" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="อื่นๆ"
                     android:textColor="@color/dark_blue"
@@ -146,13 +155,14 @@
         <EditText
             android:layout_width="123dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="number|numberDecimal"
             android:ems="10"
             android:id="@+id/rice_quantity"
             android:layout_gravity="center"
             android:textSize="@dimen/text_body"
             android:layout_weight="0.07"
-            android:numeric="decimal" />
+            android:numeric="decimal"
+            android:gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -197,7 +207,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Text"
             android:id="@+id/weight_wet_sumary"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/text_body"
@@ -210,7 +219,8 @@
             android:text="คำนวณน้ำหนักข้าวแห้ง"
             android:id="@+id/calculate_dry_button"
             android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/text_body" />
+            android:textSize="@dimen/text_body"
+            android:visibility="gone"/>
     </LinearLayout>
 
     <LinearLayout
@@ -218,7 +228,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.26"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <TextView
             android:layout_width="match_parent"

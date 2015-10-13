@@ -28,6 +28,7 @@ public class Krasop extends Fragment implements View.OnClickListener {
     private Button dryRiceButton;
     private EditText riceQuantity;
     private EditText humidQuantity;
+    private TextView sumaryView;
     private LinearLayout krasop30, krasop50, krasop100;
     private double wetRiceValue;
 
@@ -55,10 +56,16 @@ public class Krasop extends Fragment implements View.OnClickListener {
 
     private void initInstances(View rootView) {
         riceQuantity = (EditText) rootView.findViewById(R.id.rice_quantity);
+        sumaryView = (TextView) rootView.findViewById(R.id.weight_wet_sumary);
         wetRiceButton = (Button) rootView.findViewById(R.id.calculate_wet_button);
         krasop30 = (LinearLayout) rootView.findViewById(R.id.krasop_30kg);
         krasop50 = (LinearLayout) rootView.findViewById(R.id.krasop_50kg);
         krasop100 = (LinearLayout) rootView.findViewById(R.id.krasop_100kg);
+
+        krasop30.setOnClickListener(this);
+        krasop50.setOnClickListener(this);
+        krasop100.setOnClickListener(this);
+        wetRiceButton.setOnClickListener(this);
     }
 
     int unitFactor = 0;
@@ -82,6 +89,7 @@ public class Krasop extends Fragment implements View.OnClickListener {
                 break;
             case R.id.calculate_wet_button:
                 wetRiceValue = calculateWetRice(unitFactor, riceQuantity);
+                sumaryView.setText(unitFactor + " กิโลกรัม * " + riceQuantity.getText().toString() + " กระสอบ = " + wetRiceValue + " กิโลกรัม");
             }
         }
 
