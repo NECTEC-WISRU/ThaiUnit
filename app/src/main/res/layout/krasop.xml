@@ -184,7 +184,6 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/weight_layout"
         android:layout_weight="0.15"
         android:visibility="visible"
         android:weightSum="1">
@@ -234,7 +233,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="น้ำหนักข้าวแห้ง"
-            android:id="@+id/textView20"
             android:textSize="@dimen/text_body_big"
             android:background="@color/light_pink"
             android:paddingLeft="10dp"

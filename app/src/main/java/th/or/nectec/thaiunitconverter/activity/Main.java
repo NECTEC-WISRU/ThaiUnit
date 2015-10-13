@@ -6,12 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import th.or.nectec.thaiunitconverter.fragment.Aum;
 import th.or.nectec.thaiunitconverter.fragment.Krasop;
-import th.or.nectec.thaiunitconverter.fragment.Kwian;
-import th.or.nectec.thaiunitconverter.fragment.Peep;
 import th.or.nectec.thaiunitconverter.R;
-import th.or.nectec.thaiunitconverter.fragment.Tung;
 
 public class Main extends AppCompatActivity {
 
@@ -41,6 +37,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), CalculateActivity.class);
+                i.addCategory("unitconverter.intent.category.KRASOP");
                 startActivity(i);
             }
         });
@@ -58,6 +55,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), CalculateActivity.class);
+                i.addCategory("unitconverter.intent.category.TUNG");
                 startActivity(i);
             }
         });

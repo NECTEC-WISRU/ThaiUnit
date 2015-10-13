@@ -1,6 +1,5 @@
 package th.or.nectec.thaiunitconverter.fragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -12,10 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import th.or.nectec.thaiunitconverter.R;
+
 import th.or.nectec.thaiunitconverter.activity.ThaiUnitCalculator;
-import java.util.ArrayList;
 
 /**
  * Created by User on 7/10/2558.
