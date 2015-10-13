@@ -1,5 +1,6 @@
 package th.or.nectec.thaiunitconverter.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -71,10 +72,14 @@ public class Tung extends Fragment implements View.OnClickListener{
         switch (view.getId()) {
             case R.id.tung_10kg:
                 unitFactor = 10;
+                tung10.setBackgroundColor(getResources().getColor(R.color.light_gray));
+                tung15.setBackgroundColor(Color.TRANSPARENT);
                 //wetRiceValue = ThaiUnitCalculator.calculateKrasobpuiToKg(value);
                 break;
             case R.id.tung_15kg:
                 unitFactor = 15;
+                tung15.setBackgroundColor(getResources().getColor(R.color.light_gray));
+                tung10.setBackgroundColor(Color.TRANSPARENT);
                 //wetRiceValue = ThaiUnitCalculator.calculateKrasobtonnToKg(value);
                 break;
             case R.id.calculate_wet_button:
