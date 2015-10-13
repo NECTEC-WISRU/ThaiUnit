@@ -1,5 +1,6 @@
 package th.or.nectec.thaiunitconverter.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -74,14 +75,23 @@ public class Krasop extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.krasop_30kg:
                 unitFactor = 30;
+                krasop30.setBackgroundColor(getResources().getColor(R.color.light_gray));
+                krasop50.setBackgroundColor(Color.TRANSPARENT);
+                krasop100.setBackgroundColor(Color.TRANSPARENT);
                 //wetRiceValue = ThaiUnitCalculator.calculateKrasobpuiToKg(value);
                 break;
             case R.id.krasop_50kg:
                 unitFactor = 50;
+                krasop50.setBackgroundColor(getResources().getColor(R.color.light_gray));
+                krasop100.setBackgroundColor(Color.TRANSPARENT);
+                krasop30.setBackgroundColor(Color.TRANSPARENT);
                 //wetRiceValue = ThaiUnitCalculator.calculateKrasobtonnToKg(value);
                 break;
             case R.id.krasop_100kg:
                 unitFactor = 100;
+                krasop100.setBackgroundColor(getResources().getColor(R.color.light_gray));
+                krasop30.setBackgroundColor(Color.TRANSPARENT);
+                krasop50.setBackgroundColor(Color.TRANSPARENT);
                 //wetRiceValue = ThaiUnitCalculator.calculateKrasobToKg(value);
                 break;
             case R.id.calculate_wet_button:
