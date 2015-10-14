@@ -84,6 +84,8 @@ public class Krasop extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         double wetRiceValue = 0;
 
+        
+
         switch (view.getId()) {
             case R.id.krasop_30kg:
                 unitFactor = 30;
@@ -111,16 +113,16 @@ public class Krasop extends Fragment implements View.OnClickListener {
                 sumaryView.setText(unitFactor + " กิโลกรัม * " + riceQuantity.getText().toString() + " กระสอบ = " + wetRiceValue + " กิโลกรัม");
                 break;
             case R.id.plus:
-                int a=Integer.parseInt(riceQuantity.getText().toString());
+                int a = Integer.parseInt(riceQuantity.getText().toString());
                 int b = a + 1;
                 riceQuantity.setText(new Integer(b).toString());
                 break;
             case R.id.minus:
-                int c =Integer.parseInt(riceQuantity.getText().toString());
+                int c = Integer.parseInt(riceQuantity.getText().toString());
                 int d = c - 1;
                 riceQuantity.setText(new Integer(d).toString());
-                if (d == 0){
-                    
+                if (d < 0) {
+                    riceQuantity.setText("0");
                 }
                 break;
             //case R.id.more_option:
