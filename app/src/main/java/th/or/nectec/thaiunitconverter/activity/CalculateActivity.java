@@ -63,8 +63,10 @@ public class CalculateActivity extends AppCompatActivity {
             
         } else if (intentCategories.contains("unitconverter.intent.category.KRASOP")) {
             fragmentTransaction.replace(R.id.container, Krasop.newInstance()).commit();
+            getSupportActionBar().setTitle(R.string.krasop_to_kg);
         } else if (intentCategories.contains("unitconverter.intent.category.TUNG")) {
             fragmentTransaction.replace(R.id.container, Tung.newInstance()).commit();
+            getSupportActionBar().setTitle(R.string.tung_to_kg);
         }
 
     }
