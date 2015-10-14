@@ -1,4 +1,22 @@
+import java.text.SimpleDateFormat
+
 apply plugin: 'com.android.application'
+
+def AAVersion = '3.3.1'
+
+def versionMajor = 0
+def versionMinor = 1
+def versionPatch = 0
+
+def buildNumber = "$versionMajor.$versionMinor.$versionPatch"
+
+def buildTime() {
+    def df = new SimpleDateFormat("yyMMddhhmm")
+    return df.format(new Date())
+}
+
+def genVersionName = "$buildNumber";
+def genVersionCode = versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100
 
 android {
     compileSdkVersion 23
@@ -8,8 +26,9 @@ android {
         applicationId "th.or.nectec.thaiunitconverter"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode genVersionCode
+        versionName genVersionName
+        resValue "string", "app_version", "$genVersionName"
     }
     buildTypes {
         release {
