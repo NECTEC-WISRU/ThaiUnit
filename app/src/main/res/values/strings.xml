@@ -4,6 +4,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="krasop_to_kg">แปลงหน่วยจากกระสอบเป็นกิโลกรัม</string>
+    <string name="tung_to_kg">แปลงหน่วยจากถังเป็นกิโลกรัม</string>
+
     <string-array name="thai_unit">
         <item>กระสอบ</item>
         <item>ถัง</item>

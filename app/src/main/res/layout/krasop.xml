@@ -36,6 +36,31 @@
 
             <LinearLayout
                 android:orientation="vertical"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_column="3"
+                android:gravity="center"
+                android:id="@+id/other_size">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/plus"
+                    android:id="@+id/more_option"
+                    android:longClickable="true"
+                    android:paddingTop="55dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="อื่นๆ"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/text_body_choice"
+                    android:gravity="clip_vertical|center_horizontal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@color/white"
@@ -106,27 +131,6 @@
                     android:gravity="clip_vertical|center_horizontal"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_column="3"
-                android:gravity="center">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:src="@drawable/plus"
-                    android:padding="30dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="อื่นๆ"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/text_body_choice"
-                    android:gravity="clip_vertical|center_horizontal"/>
-            </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -152,24 +156,42 @@
         android:weightSum="1"
         android:layout_weight="0.08">
 
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:id="@+id/plus"
+            android:layout_weight="0.07"
+            android:textSize="@dimen/text_body"/>
+
         <EditText
-            android:layout_width="123dp"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:inputType="number|numberDecimal"
             android:ems="10"
             android:id="@+id/rice_quantity"
             android:layout_gravity="center"
             android:textSize="@dimen/text_body"
-            android:layout_weight="0.07"
             android:numeric="decimal"
             android:gravity="center" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:id="@+id/minus"
+            android:layout_weight="0.07"
+            android:textSize="@dimen/text_body_big"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="กระสอบ"
             android:layout_gravity="center"
-            android:textSize="@dimen/text_body"/>
+            android:textSize="@dimen/text_body"
+            android:layout_marginLeft="@dimen/layout_marginLeft" />
     </LinearLayout>
 
     <Button
