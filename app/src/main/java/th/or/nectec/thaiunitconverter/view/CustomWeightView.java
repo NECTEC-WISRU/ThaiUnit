@@ -20,6 +20,7 @@ public class CustomWeightView extends RelativeLayout {
 
     private TextView weightText;
     private ImageView weightIcon;
+    boolean  checked = false;
 
     public CustomWeightView(Context context) {
         super(context);
@@ -78,6 +79,19 @@ public class CustomWeightView extends RelativeLayout {
     }
     public void setCustomWeightDrawable(@DrawableRes int weightIconId){
         weightIcon.setImageResource(weightIconId);
+    }
+
+    public void setChecked(boolean checked){
+        this.checked = checked;
+        if (checked){
+            this.setBackgroundColor(getResources().getColor(R.color.light_gray));
+        }else{
+            this.setBackgroundColor(Color.TRANSPARENT);
+        }
+    }
+
+    public  boolean isChecked(){
+        return  checked;
     }
 }
 
