@@ -5,13 +5,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.InputType;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import th.or.nectec.thaiunitconverter.R;
 
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -46,6 +49,7 @@ public class Krasop extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -76,9 +80,19 @@ public class Krasop extends Fragment implements View.OnClickListener {
         minusButton.setOnClickListener(this);
         moreOption.setOnClickListener(this);
 
+        riceQuantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    //do something
+                    calculateAndShowWetRice();
+                }
+                return false;
+            }
+        });
     }
 
-    int unitFactor = 0;
+    double unitFactor = 0;
 
     @Override
     public void onClick(View view) {
@@ -107,8 +121,7 @@ public class Krasop extends Fragment implements View.OnClickListener {
                 //wetRiceValue = ThaiUnitCalculator.calculateKrasobToKg(value);
                 break;
             case R.id.calculate_wet_button:
-                wetRiceValue = calculateWetRice(unitFactor, riceQuantity);
-                sumaryView.setText(unitFactor + " กิโลกรัม * " + riceQuantity.getText().toString() + " กระสอบ = " + wetRiceValue + " กิโลกรัม");
+                calculateAndShowWetRice();
                 break;
             case R.id.plus:
                 int a = Integer.parseInt(riceQuantity.getText().toString());
@@ -127,18 +140,30 @@ public class Krasop extends Fragment implements View.OnClickListener {
                 //Toast.makeText(getActivity() , "hello", Toast.LENGTH_SHORT).show();
 
                 showCustomWeightDialog();
-
+                moreOption.setBackgroundColor(getResources().getColor(R.color.light_gray));
+                krasop100.setBackgroundColor(Color.TRANSPARENT);
+                krasop30.setBackgroundColor(Color.TRANSPARENT);
+                krasop50.setBackgroundColor(Color.TRANSPARENT);
 
                 break;
         }
     }
 
+    private void calculateAndShowWetRice() {
+        double wetRiceValue;
+        wetRiceValue = calculateWetRice(unitFactor, riceQuantity);
+        sumaryView.setText(unitFactor + " กิโลกรัม * " + riceQuantity.getText().toString() + " กระสอบ = " + wetRiceValue + " กิโลกรัม");
+    }
+
     private void showCustomWeightDialog() {
         AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
         final EditText edittext = new EditText(getActivity());
-        //alert.setMessage("ใสขนาดที่ต้องการ่");
-        alert.setTitle("ใส่ขนาดที่ต้องการ");
+        edittext.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
+                //alert.setMessage("ใสขนาดที่ต้องการ่");
+                alert.setTitle("ใส่ขนาดที่ต้องการ");
         alert.setView(edittext);
+
         alert.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 //What ever you want to do with the value
@@ -147,15 +172,20 @@ public class Krasop extends Fragment implements View.OnClickListener {
                 if (TextUtils.isEmpty(customSizeStr)) {
                     unitFactor = 0;
                 } else {
-                    unitFactor = Integer.valueOf(customSizeStr);
+                    unitFactor = Double.valueOf(customSizeStr);
                 }
 
                 CustomWeightView customWeightView = new CustomWeightView(getActivity());
                 customWeightView.setCustomWeightInfoByResource(R.string.krasop, R.drawable.krasop);
                 customWeightLayout.addView(customWeightView);
                 //unitFactor = Integer.valueOf(customSizeStr);
-            }
-        });
+                customWeightView.setBackgroundColor(getResources().getColor(R.color.light_gray));
+                moreOption.setBackgroundColor(Color.TRANSPARENT);
+                krasop100.setBackgroundColor(Color.TRANSPARENT);
+                krasop30.setBackgroundColor(Color.TRANSPARENT);
+                krasop50.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                });
 
         alert.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
@@ -166,9 +196,11 @@ public class Krasop extends Fragment implements View.OnClickListener {
         alert.show();
     }
 
-    private double calculateWetRice(int unitFactor, EditText riceQuantityEditText) {
+    private double calculateWetRice(double unitFactor, EditText riceQuantityEditText) {
         double riceQuantityValue = 0;
         String riceQuantityValueStr = riceQuantityEditText.getText().toString();
+
+
 
         if (TextUtils.isEmpty(riceQuantityValueStr)) {
             riceQuantityValue = 0;
@@ -176,7 +208,7 @@ public class Krasop extends Fragment implements View.OnClickListener {
             riceQuantityValue = Double.valueOf(riceQuantityValueStr);
         }
         double wetRiceValue = 0;
-        switch (unitFactor) {
+        switch ((int)unitFactor) {
             case 30:
                 //unitFactor = 30;
                 wetRiceValue = ThaiUnitCalculator.calculateKrasobpuiToKg(riceQuantityValue);
