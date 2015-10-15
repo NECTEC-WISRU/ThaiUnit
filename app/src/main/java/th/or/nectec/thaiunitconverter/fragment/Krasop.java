@@ -156,50 +156,57 @@ public class Krasop extends Fragment implements View.OnClickListener {
     }
 
     private void showCustomWeightDialog() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
         final EditText edittext = new EditText(getActivity());
         edittext.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
-                //alert.setMessage("ใสขนาดที่ต้องการ่");
-                alert.setTitle("ใส่ขนาดที่ต้องการ");
+        //alert.setMessage("ใสขนาดที่ต้องการ่");
+        alert.setTitle("ใส่ขนาดที่ต้องการ");
         alert.setView(edittext);
+        alert.setPositiveButton("ตกลง", null);
+        alert.setNegativeButton("ยกเลิก", null);
 
-        alert.setPositiveButton("ตกลง", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                //What ever you want to do with the value
-                //OR
-                String customSizeStr = edittext.getText().toString();
-                if (TextUtils.isEmpty(customSizeStr)) {
-                    unitFactor = 0;
-                } else {
-                    unitFactor = Double.valueOf(customSizeStr);
-                }
+        final AlertDialog customWeightDialog = alert.create();
 
-                CustomWeightView customWeightView = new CustomWeightView(getActivity());
-                customWeightView.setCustomWeightInfoByResource(R.string.krasop, R.drawable.krasop);
-                customWeightLayout.addView(customWeightView);
-                //unitFactor = Integer.valueOf(customSizeStr);
-                customWeightView.setBackgroundColor(getResources().getColor(R.color.light_gray));
-                moreOption.setBackgroundColor(Color.TRANSPARENT);
-                krasop100.setBackgroundColor(Color.TRANSPARENT);
-                krasop30.setBackgroundColor(Color.TRANSPARENT);
-                krasop50.setBackgroundColor(Color.TRANSPARENT);
+        customWeightDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                Button b = customWeightDialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                b.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        String customSizeStr = edittext.getText().toString();
+                        if (TextUtils.isEmpty(customSizeStr)) {
+                            Toast.makeText(getActivity(), "กรุณาระบุขนาดของกระสอบ", Toast.LENGTH_SHORT).show();
+                        } else if (customSizeStr.equals("0")){
+                            Toast.makeText(getActivity(), "กรุณาระบุขนาดของกระสอบ", Toast.LENGTH_SHORT).show();
+                        }else {
+                            unitFactor = Double.valueOf(customSizeStr);
+
+                            CustomWeightView customWeightView = new CustomWeightView(getActivity());
+                            customWeightView.setCustomWeightInfoByResource(R.string.krasop, R.drawable.krasop);
+                            customWeightLayout.addView(customWeightView);
+                            //unitFactor = Integer.valueOf(customSizeStr);
+                            customWeightView.setBackgroundColor(getResources().getColor(R.color.light_gray));
+                            moreOption.setBackgroundColor(Color.TRANSPARENT);
+                            krasop100.setBackgroundColor(Color.TRANSPARENT);
+                            krasop30.setBackgroundColor(Color.TRANSPARENT);
+                            krasop50.setBackgroundColor(Color.TRANSPARENT);
+
+                            customWeightDialog.dismiss();
+                        }
                     }
                 });
-
-        alert.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // what ever you want to do with No option.
             }
         });
 
-        alert.show();
+        customWeightDialog.show();
     }
 
     private double calculateWetRice(double unitFactor, EditText riceQuantityEditText) {
         double riceQuantityValue = 0;
         String riceQuantityValueStr = riceQuantityEditText.getText().toString();
-
 
 
         if (TextUtils.isEmpty(riceQuantityValueStr)) {
@@ -208,7 +215,7 @@ public class Krasop extends Fragment implements View.OnClickListener {
             riceQuantityValue = Double.valueOf(riceQuantityValueStr);
         }
         double wetRiceValue = 0;
-        switch ((int)unitFactor) {
+        switch ((int) unitFactor) {
             case 30:
                 //unitFactor = 30;
                 wetRiceValue = ThaiUnitCalculator.calculateKrasobpuiToKg(riceQuantityValue);
