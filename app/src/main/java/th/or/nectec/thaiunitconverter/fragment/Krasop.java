@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import th.or.nectec.thaiunitconverter.activity.ThaiUnitCalculator;
+import th.or.nectec.thaiunitconverter.view.CustomWeightSingleChoiceViewGroup;
 import th.or.nectec.thaiunitconverter.view.CustomWeightView;
 
 /**
@@ -39,7 +40,8 @@ public class Krasop extends Fragment implements View.OnClickListener {
     private EditText riceQuantity;
     private EditText humidQuantity;
     private TextView sumaryView;
-    private LinearLayout krasop30, krasop50, krasop100, moreOption, customWeightLayout;
+    private LinearLayout krasop30, krasop50, krasop100, moreOption;
+    private CustomWeightSingleChoiceViewGroup customWeightLayout;
     private double wetRiceValue;
 
     public static Krasop newInstance() {
@@ -70,7 +72,7 @@ public class Krasop extends Fragment implements View.OnClickListener {
         krasop30 = (LinearLayout) rootView.findViewById(R.id.krasop_30kg);
         krasop50 = (LinearLayout) rootView.findViewById(R.id.krasop_50kg);
         krasop100 = (LinearLayout) rootView.findViewById(R.id.krasop_100kg);
-        customWeightLayout = (LinearLayout) rootView.findViewById(R.id.custom_weight_layout);
+        customWeightLayout = (CustomWeightSingleChoiceViewGroup) rootView.findViewById(R.id.custom_weight_layout);
 
         krasop30.setOnClickListener(this);
         krasop50.setOnClickListener(this);
@@ -140,7 +142,6 @@ public class Krasop extends Fragment implements View.OnClickListener {
                 //Toast.makeText(getActivity() , "hello", Toast.LENGTH_SHORT).show();
 
                 showCustomWeightDialog();
-                moreOption.setBackgroundColor(getResources().getColor(R.color.light_gray));
                 krasop100.setBackgroundColor(Color.TRANSPARENT);
                 krasop30.setBackgroundColor(Color.TRANSPARENT);
                 krasop50.setBackgroundColor(Color.TRANSPARENT);
@@ -186,13 +187,8 @@ public class Krasop extends Fragment implements View.OnClickListener {
 
                             CustomWeightView customWeightView = new CustomWeightView(getActivity());
                             customWeightView.setCustomWeightInfoByResource(R.string.krasop, R.drawable.krasop);
-                            customWeightLayout.addView(customWeightView);
+                            customWeightLayout.addCustomWeightView(customWeightView);
                             //unitFactor = Integer.valueOf(customSizeStr);
-                            customWeightView.setBackgroundColor(getResources().getColor(R.color.light_gray));
-                            moreOption.setBackgroundColor(Color.TRANSPARENT);
-                            krasop100.setBackgroundColor(Color.TRANSPARENT);
-                            krasop30.setBackgroundColor(Color.TRANSPARENT);
-                            krasop50.setBackgroundColor(Color.TRANSPARENT);
 
                             customWeightDialog.dismiss();
                         }
@@ -203,6 +199,7 @@ public class Krasop extends Fragment implements View.OnClickListener {
 
         customWeightDialog.show();
     }
+
 
     private double calculateWetRice(double unitFactor, EditText riceQuantityEditText) {
         double riceQuantityValue = 0;

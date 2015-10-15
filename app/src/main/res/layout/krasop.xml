@@ -103,11 +103,10 @@
                     android:gravity="clip_vertical|center_horizontal"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <th.or.nectec.thaiunitconverter.view.CustomWeightSingleChoiceViewGroup
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/custom_weight_layout"></LinearLayout>
+                android:id="@+id/custom_weight_layout"/>
 
             <LinearLayout
                 android:orientation="vertical"
