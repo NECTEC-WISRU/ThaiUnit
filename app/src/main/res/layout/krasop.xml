@@ -33,9 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <th.or.nectec.thaiunitconverter.view.CustomWeightSingleChoiceViewGroup
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:orientation="horizontal"
                 android:id="@+id/custom_weight_layout"/>
 
             <LinearLayout

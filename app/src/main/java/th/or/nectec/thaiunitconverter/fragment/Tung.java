@@ -2,7 +2,6 @@ package th.or.nectec.thaiunitconverter.fragment;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -12,8 +11,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import th.or.nectec.thaiunitconverter.R;
-
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -22,9 +19,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import th.or.nectec.thaiunitconverter.R;
 import th.or.nectec.thaiunitconverter.activity.ThaiUnitCalculator;
-import th.or.nectec.thaiunitconverter.view.CustomWeightSingleChoiceViewGroup;
 import th.or.nectec.thaiunitconverter.view.CustomWeightView;
+import th.or.nectec.thaiunitconverter.view.SingleChoiceViewStateController;
 
 /**
  * Created by User on 7/10/2558.
@@ -42,7 +40,9 @@ public class Tung extends Fragment implements View.OnClickListener{
     private TextView sumaryView;
     private double wetRiceValue;
     private LinearLayout moreOption;
-    private CustomWeightSingleChoiceViewGroup customWeightLayout;
+    private LinearLayout customWeightLayout;
+
+    SingleChoiceViewStateController singleChoiceViewStateController = new SingleChoiceViewStateController();
 
     double unitFactor = 0;
     double[] defaultUnitFactor = new double[]{10, 15};
@@ -71,7 +71,7 @@ public class Tung extends Fragment implements View.OnClickListener{
         minusButton = (Button) rootView.findViewById(R.id.minus);
 
         moreOption = (LinearLayout) rootView.findViewById(R.id.more_option);
-        customWeightLayout = (CustomWeightSingleChoiceViewGroup) rootView.findViewById(R.id.custom_weight_layout);
+        customWeightLayout = (LinearLayout) rootView.findViewById(R.id.custom_weight_layout);
 
         wetRiceButton.setOnClickListener(this);
         plusButton.setOnClickListener(this);
@@ -80,8 +80,9 @@ public class Tung extends Fragment implements View.OnClickListener{
 
         for (int index = 0; index < defaultUnitFactor.length; index++) {
             CustomWeightView customWeightView = new CustomWeightView(getActivity());
-            customWeightView.setCustomWeightInfoByResource(R.string.tung, R.drawable.tung, defaultUnitFactor[index]);
-            customWeightLayout.addCustomWeightView(customWeightView);
+            customWeightView.setCustomWeightInfoByResource(R.drawable.tung, defaultUnitFactor[index]);
+            customWeightLayout.addView(customWeightView);
+            singleChoiceViewStateController.addView(customWeightView);
         }
 
         riceQuantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -154,14 +155,14 @@ public class Tung extends Fragment implements View.OnClickListener{
     }
     private void calculateAndShowWetRice() {
         double wetRiceValue;
-        CustomWeightView selectedView = customWeightLayout.getSelectedCustomWeightView();
+        CustomWeightView selectedView = (CustomWeightView) singleChoiceViewStateController.getSelectedCustomWeightView();
 
         hideSoftKeyboard();
 
         if (selectedView == null) {
             Toast.makeText(getActivity(), "กรุณาเลือกขนาดของถัง", Toast.LENGTH_SHORT).show();
         } else {
-            unitFactor = customWeightLayout.getSelectedCustomWeightView().getWeightFactor();
+            unitFactor = ((CustomWeightView) singleChoiceViewStateController.getSelectedCustomWeightView()).getWeightFactor();
             wetRiceValue = calculateWetRice(unitFactor, riceQuantity);
             sumaryView.setText(unitFactor + " กิโลกรัม * " + riceQuantity.getText().toString() + " ถัง = " + wetRiceValue + " กิโลกรัม");
         }
@@ -206,10 +207,10 @@ public class Tung extends Fragment implements View.OnClickListener{
                         } else {
                             unitFactor = Double.valueOf(customSizeStr);
                             CustomWeightView customWeightView = new CustomWeightView(getActivity());
-                            customWeightView.setCustomWeightInfoByResource(R.string.tung, R.drawable.tung, unitFactor);
-                            customWeightLayout.addCustomWeightView(customWeightView);
-                            //unitFactor = Integer.valueOf(customSizeStr);
-                            customWeightLayout.setCheckedItem(customWeightView);
+                            customWeightView.setCustomWeightInfoByResource(R.drawable.tung, unitFactor);
+                            customWeightLayout.addView(customWeightView);
+                            singleChoiceViewStateController.addView(customWeightView);
+                            singleChoiceViewStateController.setCheckedItem(customWeightView);
 
                             customWeightDialog.dismiss();
                         }
