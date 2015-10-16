@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import th.or.nectec.thaiunitconverter.R;
+import th.or.nectec.thaiunitconverter.fragment.CalculateFragment;
 import th.or.nectec.thaiunitconverter.fragment.Krasop;
 import th.or.nectec.thaiunitconverter.fragment.Kwian;
 import th.or.nectec.thaiunitconverter.fragment.Tung;
@@ -27,6 +28,10 @@ public class CalculateActivity extends AppCompatActivity {
 
     private ArrayList<String> ThaiUnit = new ArrayList<String>();
     private String[] unitArray;
+
+    String unitStr;
+    int unitIcon;
+    double[] defaultUnitFactor;
 
     @Override
 
@@ -62,7 +67,10 @@ public class CalculateActivity extends AppCompatActivity {
         if (intentCategories == null){
             
         } else if (intentCategories.contains("unitconverter.intent.category.KRASOP")) {
-            fragmentTransaction.replace(R.id.container, Krasop.newInstance()).commit();
+            unitStr = getString(R.string.krasop);
+            unitIcon = R.drawable.krasop;
+            defaultUnitFactor = new double[]{30, 50, 100};
+            fragmentTransaction.replace(R.id.container, CalculateFragment.newInstance(unitStr, unitIcon, defaultUnitFactor)).commit();
             getSupportActionBar().setTitle(R.string.krasop_to_kg);
         } else if (intentCategories.contains("unitconverter.intent.category.TUNG")) {
             fragmentTransaction.replace(R.id.container, Tung.newInstance()).commit();

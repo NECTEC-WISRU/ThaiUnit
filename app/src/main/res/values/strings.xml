@@ -17,4 +17,8 @@
 
     <string name="krasop">กระสอบ</string>
     <string name="tung">ถัง</string>
+
+    <string name="please_select_unit_factor">กรุณาเลือกขนาดของ%1$s</string>
+    <string name="please_define_unit_factor">กรุณากำหนดน้ำหนักของ%1$sที่จะเพิ่ม</string>
+    <string name="calculate_wet_result">%1$s กิโลกรัม * %2$s %3$s = %4$s กิโลกรัม</string>
 </resources>
