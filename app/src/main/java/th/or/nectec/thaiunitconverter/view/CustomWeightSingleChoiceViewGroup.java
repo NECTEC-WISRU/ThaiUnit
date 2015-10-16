@@ -1,6 +1,9 @@
 package th.or.nectec.thaiunitconverter.view;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -34,7 +37,7 @@ public class CustomWeightSingleChoiceViewGroup extends LinearLayout {
         customWeightViewArrayList.add(view);
     }
 
-    private  void setCheckedItem(View v){
+    public   void setCheckedItem(View v){
         int size = customWeightViewArrayList.size();
         for(int i=0; i<size; i++){
             CustomWeightView eachView = customWeightViewArrayList.get(i);
@@ -46,4 +49,28 @@ public class CustomWeightSingleChoiceViewGroup extends LinearLayout {
             }
         }
     }
+    public CustomWeightView getSelectedCustomWeightView(){
+        if (currentCheckItemPosition == -1){
+            return null;
+        }
+        return customWeightViewArrayList.get(currentCheckItemPosition);
+    }
+
+    //TODO savestate ของ view
+//    @Override
+//    public Parcelable onSaveInstanceState() {
+//        super.onSaveInstanceState();
+//        Bundle bundle = new Bundle();
+//        // Save current View's state here
+//        bundle.putInt("checkedPosition", currentCheckItemPosition);
+//        bundle.putParcelableArrayList("customWeightViewArray", customWeightViewArrayList);
+//        return bundle;
+//    }
+//
+//    @Override
+//    public void onRestoreInstanceState(Parcelable state) {
+//        super.onRestoreInstanceState(state);
+//        // Restore View's state here
+//    }
+
 }
