@@ -5,6 +5,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="1"
+    android:inputType="number"
     >
 
 
@@ -23,31 +24,32 @@
         android:paddingBottom="10dp"/>
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/horizontalScrollView"
-        android:layout_gravity="center_horizontal" >
+        android:id="@+id/horizontalScrollView" >
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <th.or.nectec.thaiunitconverter.view.CustomWeightSingleChoiceViewGroup
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/custom_weight_layout"/>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:layout_column="3"
                 android:gravity="center"
-                android:id="@+id/other_size">
+                android:id="@+id/more_option">
 
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@drawable/plus"
-                    android:id="@+id/more_option"
-                    android:longClickable="true"
+                    android:longClickable="false"
                     android:paddingTop="55dp" />
 
                 <TextView
@@ -56,78 +58,6 @@
                     android:text="อื่นๆ"
                     android:textColor="@color/dark_blue"
                     android:textSize="@dimen/text_body_choice"
-                    android:gravity="clip_vertical|center_horizontal"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:id="@+id/krasop_30kg"
-                android:gravity="center"
-                android:layout_marginRight="@dimen/layout_marginRight">
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/krasop"
-                    android:scaleType="fitEnd" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="กระสอบ (30 ก.ก.)"
-                    android:textSize="@dimen/text_body_choice"
-                    android:textColor="@color/dark_blue"
-                    android:gravity="clip_vertical|center_horizontal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_column="1"
-                android:id="@+id/krasop_50kg"
-                android:gravity="center"
-                android:layout_marginRight="@dimen/layout_marginRight">
-
-                <ImageView
-                    android:layout_width="125dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/krasop"
-                    android:scaleType="fitEnd" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="กระสอบ (50 ก.ก.)"
-                    android:textSize="@dimen/text_body_choice"
-                    android:textColor="@color/dark_blue"
-                    android:gravity="clip_vertical|center_horizontal"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_column="1"
-                android:id="@+id/krasop_100kg"
-                android:gravity="center"
-                android:layout_marginRight="@dimen/layout_marginRight">
-
-                <ImageView
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:src="@drawable/krasop"
-                    android:scaleType="fitEnd" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="กระสอบ (100 ก.ก.)"
-                    android:textSize="@dimen/text_body_choice"
-                    android:textColor="@color/dark_blue"
                     android:gravity="clip_vertical|center_horizontal"/>
             </LinearLayout>
 
@@ -174,7 +104,9 @@
             android:layout_gravity="center"
             android:textSize="@dimen/text_body"
             android:numeric="decimal"
-            android:gravity="center" />
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            />
 
         <Button
             style="?android:attr/buttonStyleSmall"

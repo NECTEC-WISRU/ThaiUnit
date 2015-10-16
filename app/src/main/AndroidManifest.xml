@@ -20,7 +20,8 @@
 
         <activity
             android:name="th.or.nectec.thaiunitconverter.activity.CalculateActivity"
-             >
+            android:windowSoftInputMode="stateHidden"
+            >
             <intent-filter>
                 <action android:name="unitconverter.intent.action.CALCULATE" /><!--เป็นการจำแนกประเภทการกระทำของintentที่จะใช้งานคำนวณค.ชื้น-->
                 <category android:name="unitconverter.intent.category.KWIAN" />
