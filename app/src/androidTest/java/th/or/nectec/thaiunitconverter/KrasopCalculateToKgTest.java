@@ -35,37 +35,37 @@ public class KrasopCalculateToKgTest {
 
     @Test
     public void กดปุ่มกระสอบ30โลแล้วป้อน4กระสอบต้องได้120กิโลกรัม(){
-        onView(withText("กระสอบ (30 ก.ก.)"))
+        onView(withText("30 กก."))
                 .perform(click());
         onView(withId(R.id.rice_quantity))
                 .perform(replaceText("4"));
         onView(withId(R.id.calculate_wet_button))
                 .perform(click());
-        onView(withText("30 กิโลกรัม * 4 กระสอบ = 120.0 กิโลกรัม"))
+        onView(withText("30 กิโลกรัม * 4 กระสอบ = 120 กิโลกรัม"))
                 .check(matches(isDisplayed()));
     }
 
     @Test
     public void กดปุ่มกระสอบ50โลแล้วป้อน4กระสอบต้องได้200กิโลกรัม(){
-        onView(withText("กระสอบ (50 ก.ก.)"))
+        onView(withText("50 กก."))
                 .perform(click());
         onView(withId(R.id.rice_quantity))
                 .perform(replaceText("4"));
         onView(withId(R.id.calculate_wet_button))
                 .perform(click());
-        onView(withText("50 กิโลกรัม * 4 กระสอบ = 200.0 กิโลกรัม"))
+        onView(withText("50 กิโลกรัม * 4 กระสอบ = 200 กิโลกรัม"))
                 .check(matches(isDisplayed()));
     }
 
     @Test
     public void กดปุ่มกระสอบ100โลแล้วป้อน4กระสอบต้องได้400กิโลกรัม(){
-        onView(withText("กระสอบ (100 ก.ก.)"))
+        onView(withText("100 กก."))
                 .perform(click());
         onView(withId(R.id.rice_quantity))
                 .perform(replaceText("4"));
         onView(withId(R.id.calculate_wet_button))
                 .perform(click());
-        onView(withText("100 กิโลกรัม * 4 กระสอบ = 400.0 กิโลกรัม"))
+        onView(withText("100 กิโลกรัม * 4 กระสอบ = 400 กิโลกรัม"))
                 .check(matches(isDisplayed()));
     }
 
