@@ -1,23 +1,16 @@
 package th.or.nectec.thaiunitconverter.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Set;
 
 import th.or.nectec.thaiunitconverter.R;
 import th.or.nectec.thaiunitconverter.fragment.CalculateFragment;
-import th.or.nectec.thaiunitconverter.fragment.Krasop;
-import th.or.nectec.thaiunitconverter.fragment.Kwian;
-import th.or.nectec.thaiunitconverter.fragment.Tung;
 
 /**
  * Created by User on 7/10/2558.
