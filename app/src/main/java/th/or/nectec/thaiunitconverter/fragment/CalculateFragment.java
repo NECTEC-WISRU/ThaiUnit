@@ -20,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 import th.or.nectec.thaiunitconverter.R;
 import th.or.nectec.thaiunitconverter.activity.ThaiUnitCalculator;
 import th.or.nectec.thaiunitconverter.view.CustomWeightView;
@@ -48,6 +50,9 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     private LinearLayout moreOption;
     private LinearLayout customWeightLayout;
     private double wetRiceValue;
+
+    String pattern = "###,###.##";
+    DecimalFormat df = new DecimalFormat(pattern);
 
     SingleChoiceViewStateController singleChoiceViewStateController = new SingleChoiceViewStateController();
 
@@ -122,14 +127,16 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 calculateAndShowWetRice();
                 break;
             case R.id.plus:
-                int a = Integer.parseInt(riceQuantity.getText().toString());
-                int b = a + 1;
-                riceQuantity.setText(new Integer(b).toString());
+                double a = Double.parseDouble(riceQuantity.getText().toString());
+                double b = a + 1;
+                String outputPlus = df.format(b);
+                riceQuantity.setText(outputPlus);
                 break;
             case R.id.minus:
-                int c = Integer.parseInt(riceQuantity.getText().toString());
-                int d = c - 1;
-                riceQuantity.setText(new Integer(d).toString());
+                double c = Double.parseDouble(riceQuantity.getText().toString());
+                double d = c - 1;
+                String outoutMinus = df.format(d);
+                riceQuantity.setText(outoutMinus);
                 if (d < 0) {
                     riceQuantity.setText("0");
                 }
