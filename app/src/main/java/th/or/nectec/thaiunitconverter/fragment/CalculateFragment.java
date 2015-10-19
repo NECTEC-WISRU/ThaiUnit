@@ -46,7 +46,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
     private EditText riceQuantity;
     private EditText humidQuantity;
-    private TextView sumaryView;
+    private TextView sumaryView, answerSumaryView;
     private LinearLayout moreOption;
     private LinearLayout customWeightLayout;
     private double wetRiceValue;
@@ -85,6 +85,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     private void initInstances(View rootView) {
         riceQuantity = (EditText) rootView.findViewById(R.id.rice_quantity);
         sumaryView = (TextView) rootView.findViewById(R.id.weight_wet_sumary);
+        answerSumaryView = (TextView) rootView.findViewById(R.id.answer_weight_wet_sumary);
         wetRiceButton = (Button) rootView.findViewById(R.id.calculate_wet_button);
         plusButton = (Button) rootView.findViewById(R.id.plus);
         minusButton = (Button) rootView.findViewById(R.id.minus);
@@ -160,7 +161,8 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         } else {
             unitFactor = ((CustomWeightView) singleChoiceViewStateController.getSelectedCustomWeightView()).getWeightFactor();
             wetRiceValue = calculateWetRice(unitFactor, riceQuantity);
-            sumaryView.setText(String.format(getString(R.string.calculate_wet_result), unitFactor, Double.valueOf(riceQuantity.getText().toString()), unitStr, wetRiceValue));
+            sumaryView.setText(String.format(getString(R.string.calculate_wet_result), df.format(unitFactor), df.format(Double.valueOf(riceQuantity.getText().toString())), unitStr));
+            answerSumaryView.setText(String.format(getString(R.string.answer_calculate_wet_result), df.format(wetRiceValue)));
         }
     }
 

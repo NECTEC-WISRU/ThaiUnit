@@ -162,20 +162,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_weight="0.29">
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
+        android:gravity="center_vertical|center_horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/weight_wet_sumary"
-            android:layout_gravity="center_horizontal"
             android:textSize="@dimen/text_body"
             android:gravity="center"
-            android:layout_weight="1"
             android:textColor="@color/black" />
 
         <TextView
@@ -183,7 +181,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/answer_weight_wet_sumary"
             android:textSize="50dp"
-            android:layout_weight="1"/>
+            android:textColor="@color/red1" />
 
         <Button
             android:layout_width="wrap_content"

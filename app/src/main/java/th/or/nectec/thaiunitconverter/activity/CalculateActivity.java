@@ -73,7 +73,10 @@ public class CalculateActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.container, CalculateFragment.newInstance(unitStr, unitIcon, defaultUnitFactor)).commit();
             getSupportActionBar().setTitle(R.string.krasop_to_kg);
         } else if (intentCategories.contains("unitconverter.intent.category.TUNG")) {
-            fragmentTransaction.replace(R.id.container, Tung.newInstance()).commit();
+            unitStr = getString(R.string.tung);
+            unitIcon = R.drawable.tung;
+            defaultUnitFactor = new double[]{10, 15};
+            fragmentTransaction.replace(R.id.container, CalculateFragment.newInstance(unitStr, unitIcon, defaultUnitFactor)).commit();
             getSupportActionBar().setTitle(R.string.tung_to_kg);
         }
 
