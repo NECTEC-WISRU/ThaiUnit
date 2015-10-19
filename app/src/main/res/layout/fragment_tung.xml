@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/layout_marginBottom"
 
-        android:background="@color/light_purple"
+        android:background="@color/white"
         android:gravity="center_vertical"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
@@ -45,9 +45,9 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:longClickable="false"
-                    android:paddingTop="55dp"
+                    android:paddingTop="20dp"
                     android:src="@drawable/plus" />
 
                 <TextView
@@ -56,7 +56,7 @@
                     android:gravity="clip_vertical|center_horizontal"
                     android:text="อื่นๆ"
                     android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/text_body_choice" />
+                    android:textSize="@dimen/text_body_big" />
             </LinearLayout>
 
         </LinearLayout>
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/layout_marginBottom"
         android:layout_marginTop="@dimen/layout_marginTop"
-        android:background="@color/light_purple"
+        android:background="@color/white"
         android:gravity="center_vertical"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
@@ -103,7 +103,7 @@
             android:imeOptions="actionDone"
             android:inputType="number|numberDecimal"
             android:numeric="decimal"
-            android:textSize="@dimen/text_body"
+            android:textSize="@dimen/text_body_big"
             android:text="0" />
 
         <Button
@@ -121,7 +121,8 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/layout_marginLeft"
             android:text="ถัง"
-            android:textSize="@dimen/text_body" />
+            android:textSize="@dimen/text_body"
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <Button
@@ -146,7 +147,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/layout_marginBottom"
             android:layout_marginTop="@dimen/layout_marginTop"
-            android:background="@color/light_purple"
+            android:background="@color/white"
             android:gravity="center_vertical"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
@@ -162,7 +163,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.97"
             android:gravity="center"
-            android:textSize="@dimen/text_body" />
+            android:textSize="@dimen/text_body"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/calculate_dry_button"

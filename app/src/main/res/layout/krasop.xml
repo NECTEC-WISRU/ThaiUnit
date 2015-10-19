@@ -48,10 +48,10 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="100dp"
                     android:src="@drawable/plus"
                     android:longClickable="false"
-                    android:paddingTop="55dp" />
+                    android:paddingTop="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -125,7 +125,8 @@
             android:text="กระสอบ"
             android:layout_gravity="center"
             android:textSize="@dimen/text_body_big"
-            android:layout_marginLeft="@dimen/layout_marginLeft" />
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <Button
@@ -158,15 +159,31 @@
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.29">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/weight_wet_sumary"
             android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/text_body_big"
+            android:textSize="@dimen/text_body"
             android:gravity="center"
-            android:layout_weight="0.97" />
+            android:layout_weight="1"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer_weight_wet_sumary"
+            android:textSize="50dp"
+            android:layout_weight="1"/>
 
         <Button
             android:layout_width="wrap_content"

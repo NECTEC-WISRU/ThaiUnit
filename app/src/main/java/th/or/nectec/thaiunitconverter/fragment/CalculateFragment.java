@@ -143,7 +143,6 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.more_option:
                 //Toast.makeText(getActivity() , "hello", Toast.LENGTH_SHORT).show();
-
                 showCustomWeightDialog();
 
                 break;
