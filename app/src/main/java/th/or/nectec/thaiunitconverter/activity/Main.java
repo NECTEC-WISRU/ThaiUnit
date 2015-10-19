@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import th.or.nectec.thaiunitconverter.fragment.Krasop;
@@ -17,6 +19,8 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
+
+        getSupportActionBar().hide();
 
         krasop = (LinearLayout) findViewById(R.id.krasopButton);
         kwian = (LinearLayout) findViewById(R.id.kwianButton);
@@ -68,5 +72,7 @@ public class Main extends AppCompatActivity {
             }
         });
     }
+
 }
+
 
