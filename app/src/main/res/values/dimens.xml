@@ -14,11 +14,11 @@
     <dimen name="layout_marginBottom">10dp</dimen>
     <dimen name="layout_marginTop">10dp</dimen>
     <dimen name="layout_marginBottom_header">15dp</dimen>
-    <dimen name="layout_marginRight">10dp</dimen>
-    <dimen name="layout_marginLeft">10dp</dimen>
+    <dimen name="layout_marginRight">20dp</dimen>
+    <dimen name="layout_marginLeft">20dp</dimen>
 
-    <dimen name="text_body">20dp</dimen>
-    <dimen name="text_body_big">25dp</dimen>
+    <dimen name="text_body">25dp</dimen>
+    <dimen name="text_body_big">30dp</dimen>
     <dimen name="text_body_choice">17dp</dimen>
     <dimen name="text_body_answer">30dp</dimen>
     <dimen name="text_body__button">20dp</dimen>

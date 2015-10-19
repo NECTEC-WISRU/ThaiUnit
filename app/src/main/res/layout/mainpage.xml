@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/white"
     android:gravity="fill_vertical"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <FrameLayout
@@ -11,32 +12,66 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
             android:id="@+id/imageView3"
-            android:src="@drawable/rice"
-            android:scaleType="centerCrop" />
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/rice" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/rice_seed" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/text_body"
-            android:paddingLeft="@dimen/layout_marginLeft"
-            android:paddingTop="@dimen/layout_marginTop"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="left"
+            android:text="@string/app_version"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/white"
-            android:id="@+id/textView7" />
+            android:textSize="@dimen/text_body_big" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="236dp"
+            android:layout_height="89dp"
+            android:layout_gravity="center_horizontal|top"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="แอพกระสอบข้าว"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_body_big" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="bottom"
+            android:background="@android:color/black" />
+
     </FrameLayout>
 
     <TextView
+        android:id="@+id/textView6"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="เลือกหน่วยคำนวณ"
-        android:id="@+id/textView6"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_body_big"
-        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginBottom="@dimen/layout_marginBottom"
         android:layout_marginTop="@dimen/layout_marginTop"
-        android:layout_marginBottom="@dimen/layout_marginBottom"/>
+        android:gravity="center_vertical|center_horizontal"
+        android:text="เลือกหน่วยคำนวณ"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_body" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/layout_marginLeft"
+        android:layout_marginRight="@dimen/layout_marginRight"
+        android:background="@android:color/black" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -44,154 +79,195 @@
         android:layout_weight="1">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="@dimen/layout_width"
-                android:layout_height="@dimen/layout_height"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/layout_marginTop"
-                android:layout_marginBottom="@dimen/layout_marginBottom"
-                android:background="@color/light_pink"
-                android:weightSum="1"
                 android:id="@+id/krasopButton"
-                android:clickable="true">
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/layout_marginBottom"
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                android:background="@color/white"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
 
                 <ImageView
-                    android:layout_width="@dimen/layout_image_width"
-                    android:layout_height="match_parent"
                     android:id="@+id/imageView"
-                    android:layout_gravity="bottom|center"
-                    android:src="@drawable/krasop" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:text="กระสอบ"
-                    android:id="@+id/textView"
-                    android:textSize="@dimen/text_body"
-                    android:gravity="center_vertical|center_horizontal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="@dimen/layout_width"
-                android:layout_height="@dimen/layout_height"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/layout_marginTop"
-                android:layout_marginBottom="@dimen/layout_marginBottom"
-                android:background="@color/light_purple"
-                android:weightSum="1"
-                android:id="@+id/tungButton"
-                android:clickable="true">
-
-                <ImageView
                     android:layout_width="@dimen/layout_image_width"
                     android:layout_height="match_parent"
-                    android:id="@+id/imageView2"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/tung"/>
+                    android:layout_gravity="bottom|center"
+                    android:src="@drawable/krasop"
+                    android:layout_marginTop="5dp" />
 
                 <TextView
+                    android:id="@+id/textView"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="ถัง"
-                    android:id="@+id/textView2"
-                    android:textSize="@dimen/text_body"
-                    android:gravity="center_vertical|center_horizontal" />
+                    android:gravity="center_vertical"
+                    android:text="กระสอบ"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_body_big" />
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                />
+
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="@dimen/layout_width"
+                android:id="@+id/tungButton"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/layout_marginTop"
                 android:layout_marginBottom="@dimen/layout_marginBottom"
-                android:background="@color/light_blue"
-                android:id="@+id/aumButton"
-                android:clickable="true">
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                android:layout_marginTop="@dimen/layout_marginTop"
+                android:background="@color/white"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="@dimen/layout_image_width"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/tung" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
+                    android:text="ถัง"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_body_big" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                />
+
+            <LinearLayout
+                android:id="@+id/aumButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/layout_marginBottom"
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                android:layout_marginTop="@dimen/layout_marginTop"
+                android:background="@color/white"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView4"
                     android:layout_width="@dimen/layout_image_width"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView4"
                     android:src="@drawable/aum" />
 
                 <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
                     android:text="อุ้ม"
-                    android:id="@+id/textView3"
-                    android:textSize="@dimen/text_body"
-                    android:gravity="center_vertical|center_horizontal"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_body_big" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                />
+
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="@dimen/layout_width"
+                android:id="@+id/peepButton"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/layout_marginTop"
                 android:layout_marginBottom="@dimen/layout_marginBottom"
-                android:background="@color/light_green"
-                android:id="@+id/peepButton"
-                android:clickable="true">
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                android:layout_marginTop="@dimen/layout_marginTop"
+                android:background="@color/white"
+                android:clickable="true"
+                android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageView5"
                     android:layout_width="@dimen/layout_image_width"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView5"
-                    android:src="@drawable/peep"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/peep" />
 
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
                     android:text="ปี๊บ"
-                    android:id="@+id/textView4"
-                    android:textSize="@dimen/text_body"
-                    android:gravity="center_vertical|center_horizontal"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_body_big" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/black"
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                />
+
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="@dimen/layout_width"
+                android:id="@+id/kwianButton"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/layout_height"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/layout_marginTop"
                 android:layout_marginBottom="@dimen/layout_marginBottom"
-                android:background="@color/light_yellow"
-                android:id="@+id/kwianButton"
-                android:clickable="true">
+                android:layout_marginLeft="@dimen/layout_marginLeft"
+                android:layout_marginRight="@dimen/layout_marginRight"
+                android:layout_marginTop="@dimen/layout_marginTop"
+                android:background="@color/white"
+                android:clickable="true"
+                android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/imageView6"
                     android:layout_width="@dimen/layout_image_width"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView6"
                     android:src="@drawable/kwian1" />
 
                 <TextView
+                    android:id="@+id/textView5"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
+                    android:gravity="center_vertical"
                     android:text="เกวียน"
-                    android:id="@+id/textView5"
-                    android:textSize="@dimen/text_body"
-                    android:gravity="center_vertical|center_horizontal"/>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_body_big" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_version"
-        android:textColor="@color/white"
-        android:gravity="right" />
 
 </LinearLayout>

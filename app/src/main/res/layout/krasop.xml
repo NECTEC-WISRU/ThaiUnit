@@ -18,7 +18,7 @@
         android:text="เลือกขนาด"
         android:textColor="@color/black"
         android:textSize="@dimen/text_body_big"
-        android:background="@color/light_pink"
+        android:background="@color/white"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"/>
@@ -58,7 +58,7 @@
                     android:layout_height="50dp"
                     android:text="อื่นๆ"
                     android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/text_body_choice"
+                    android:textSize="@dimen/text_body_big"
                     android:gravity="clip_vertical|center_horizontal"/>
             </LinearLayout>
 
@@ -74,7 +74,7 @@
         android:text="จำนวน"
         android:textColor="@color/black"
         android:textSize="@dimen/text_body_big"
-        android:background="@color/light_pink"
+        android:background="@color/white"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"/>
@@ -91,8 +91,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+"
-            android:id="@+id/plus"
+            android:text="-"
+            android:id="@+id/minus"
             android:layout_weight="0.07"
             android:textSize="@dimen/text_body"/>
 
@@ -103,7 +103,7 @@
             android:ems="10"
             android:id="@+id/rice_quantity"
             android:layout_gravity="center"
-            android:textSize="@dimen/text_body"
+            android:textSize="@dimen/text_body_big"
             android:numeric="decimal"
             android:gravity="center"
             android:imeOptions="actionDone"
@@ -114,8 +114,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:id="@+id/minus"
+            android:text="+"
+            android:id="@+id/plus"
             android:layout_weight="0.07"
             android:textSize="@dimen/text_body_big"/>
 
@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:text="กระสอบ"
             android:layout_gravity="center"
-            android:textSize="@dimen/text_body"
+            android:textSize="@dimen/text_body_big"
             android:layout_marginLeft="@dimen/layout_marginLeft" />
     </LinearLayout>
 
@@ -154,7 +154,7 @@
             android:text="น้ำหนักข้าวสด"
             android:textColor="@color/black"
             android:textSize="@dimen/text_body_big"
-            android:background="@color/light_pink"
+            android:background="@color/white"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp" />
@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/weight_wet_sumary"
             android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/text_body"
+            android:textSize="@dimen/text_body_big"
             android:gravity="center"
             android:layout_weight="0.97" />
 
@@ -202,7 +202,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Text"
-            android:textSize="@dimen/text_body"
+            android:textSize="@dimen/text_body_big"
             android:id="@+id/weight_dry_sumary"
             android:layout_gravity="center_horizontal"
             android:gravity="center"/>
