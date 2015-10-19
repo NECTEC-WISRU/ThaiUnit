@@ -65,7 +65,7 @@ public class CustomWeightView extends RelativeLayout implements SingleChoiceView
         DecimalFormat df = new DecimalFormat(pattern);
         String output = df.format(weightFactor);
 
-        weightText.setText(df.format(weightFactor) + " กก.");
+        weightText.setText(output + " กก.");
         weightIcon.setImageDrawable(weightIconDrawable);
     }
 
@@ -78,7 +78,7 @@ public class CustomWeightView extends RelativeLayout implements SingleChoiceView
     public void setChecked(boolean checked) {
         this.checked = checked;
         if (checked) {
-            this.setBackgroundColor(getResources().getColor(R.color.light_gray));
+            this.setBackground(getResources().getDrawable(R.drawable.circle_background));
         } else {
             this.setBackgroundColor(Color.TRANSPARENT);
         }
