@@ -22,4 +22,10 @@
     <string name="please_define_unit_factor">กรุณากำหนดน้ำหนักของ%1$sที่จะเพิ่ม</string>
     <string name="calculate_wet_result">%1$s กิโลกรัม × %2$s %3$s จะได้</string>
     <string name="answer_calculate_wet_result">%1$s กิโลกรัม</string>
+
+    <string name="answer_calculate_dry_result">%1$s กิโลกรัม</string>
+
+    <string name="minimum_percent">ค่าความชื้นมาตราฐานเท่ากับ %1$s</string>
+    <string name="please_define_humid_percent">กรุณากำหนดเปอร์เซนต์ความชื้น</string>
+
 </resources>

@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,12 +46,18 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     private Button plusButton;
     private Button minusButton;
 
+    private Button plusPercentButton, minusPercentButton;
+
     private EditText riceQuantity;
-    private EditText humidQuantity;
+    private EditText humidPercentView;
     private TextView sumaryView, answerSumaryView;
+
+    private TextView sumaryDryView, answerSumaryDryView;
+
     private LinearLayout moreOption;
     private LinearLayout customWeightLayout;
-    private double wetRiceValue;
+    private double wetRiceValue = 0;
+    private double dryRiceValue;
 
     String pattern = "###,###.##";
     DecimalFormat df = new DecimalFormat(pattern);
@@ -82,13 +90,23 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         return rootView;
     }
 
-    private void initInstances(View rootView) {
+    private void initInstances(final View rootView) {
         riceQuantity = (EditText) rootView.findViewById(R.id.rice_quantity);
+
+        humidPercentView = (EditText) rootView.findViewById(R.id.rice_humid_percent);
+
         sumaryView = (TextView) rootView.findViewById(R.id.weight_wet_sumary);
         answerSumaryView = (TextView) rootView.findViewById(R.id.answer_weight_wet_sumary);
+
+        sumaryDryView = (TextView) rootView.findViewById(R.id.weight_dry_sumary);
+        answerSumaryDryView = (TextView) rootView.findViewById(R.id.answer_weight_dry_sumary);
+
         wetRiceButton = (Button) rootView.findViewById(R.id.calculate_wet_button);
         plusButton = (Button) rootView.findViewById(R.id.plus);
         minusButton = (Button) rootView.findViewById(R.id.minus);
+
+        plusPercentButton = (Button) rootView.findViewById(R.id.plus_percent);
+        minusPercentButton = (Button) rootView.findViewById(R.id.minus_percent);
 
         moreOption = (LinearLayout) rootView.findViewById(R.id.more_option);
         customWeightLayout = (LinearLayout) rootView.findViewById(R.id.custom_weight_layout);
@@ -98,6 +116,43 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         minusButton.setOnClickListener(this);
         moreOption.setOnClickListener(this);
 
+        plusPercentButton.setOnClickListener(this);
+        minusPercentButton.setOnClickListener(this);
+
+        humidPercentView.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                answerSumaryDryView = (TextView) rootView.findViewById(R.id.answer_weight_dry_sumary);
+
+                double humidPercent = 0;
+
+                String humidPercentStr = humidPercentView.getText().toString();
+
+                if (TextUtils.isEmpty(humidPercentStr)) {
+                    //humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
+                    Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
+                } else {
+                    humidPercent = Double.valueOf(humidPercentStr);
+                    if (humidPercent >= STANDARD_PERCENT) {
+                        dryRiceValue = calculateDryResult(humidPercent, wetRiceValue);
+                        answerSumaryDryView.setText(String.format(getString(R.string.answer_calculate_dry_result), df.format(dryRiceValue)));
+                    } else {
+                        Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
 
         for (int index = 0; index < defaultUnitFactor.length; index++) {
             CustomWeightView customWeightView = new CustomWeightView(getActivity());
@@ -118,6 +173,9 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         });
     }
 
+    private double calculateDryResult(double percent, double dryRiceValue) {
+        return dryRiceValue*((100-percent)/(100- STANDARD_PERCENT));
+    }
 
     @Override
     public void onClick(View view) {
@@ -145,7 +203,23 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
             case R.id.more_option:
                 //Toast.makeText(getActivity() , "hello", Toast.LENGTH_SHORT).show();
                 showCustomWeightDialog();
+                break;
 
+            case R.id.plus_percent:
+                double e = Double.parseDouble(humidPercentView.getText().toString());
+                double f = e + 1;
+                String outputPlusPercent = df.format(f);
+                humidPercentView.setText(outputPlusPercent);
+                break;
+            case R.id.minus_percent:
+                double g = Double.parseDouble(humidPercentView.getText().toString());
+                double h = g - 1;
+                String outoutMinusPercent = df.format(h);
+                humidPercentView.setText(outoutMinusPercent);
+                if (h < STANDARD_PERCENT) {
+                    humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
+                    //Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
@@ -228,7 +302,8 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         } else {
             riceQuantityValue = Double.valueOf(riceQuantityValueStr);
         }
-        double wetRiceValue = 0;
+        wetRiceValue = 0;
+
         switch ((int) unitFactor) {
             case 30:
                 //unitFactor = 30;
@@ -248,5 +323,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         }
         return wetRiceValue;
     }
+
+    ;
 }
 
