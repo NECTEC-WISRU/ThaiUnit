@@ -1,7 +1,9 @@
 package th.or.nectec.thaiunitconverter.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
@@ -124,6 +126,8 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         plusPercentButton.setOnClickListener(this);
         minusPercentButton.setOnClickListener(this);
 
+
+        humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
         humidPercentView.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -197,6 +201,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
             case R.id.calculate_wet_button:
                 calculateAndShowWetRice();
                 calculateAndShowDryResult();
+
                 break;
             case R.id.plus:
                 increaseRiceQuantity();
@@ -262,7 +267,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     }
 
     private void calculateAndShowWetRice() {
-        double wetRiceValue;
+
         CustomWeightView selectedView = (CustomWeightView) singleChoiceViewStateController.getSelectedCustomWeightView();
 
         hideSoftKeyboard();
@@ -281,6 +286,17 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
             resultLayout.setVisibility(View.VISIBLE);
         }
+
+        boolean isLaunchFromOther = getActivity().getIntent().getBooleanExtra("is_launch_from_other", false);
+
+        if (isLaunchFromOther){
+            Intent intent = new Intent();
+            intent.putExtra("wetRiceResult", wetRiceValue);//การส่งค่าตัวแปรให้กับactivityปลายทาง
+            intent.putExtra("dryRiceResult", dryRiceValue);
+            getActivity().setResult(Activity.RESULT_OK, intent);//เมื่อ activity success ก้จะส่ง intent ไป
+            getActivity().finish();
+        }
+
     }
 
     private void showCustomWeightDialog() {

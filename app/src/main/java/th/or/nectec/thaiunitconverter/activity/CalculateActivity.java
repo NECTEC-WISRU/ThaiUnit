@@ -72,7 +72,6 @@ public class CalculateActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.container, CalculateFragment.newInstance(unitStr, unitIcon, defaultUnitFactor)).commit();
             getSupportActionBar().setTitle(R.string.tung_to_kg);
         }
-
     }
 }
 

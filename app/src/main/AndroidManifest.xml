@@ -15,9 +15,18 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="unitconverter.intent.action.CALCULATE_DRY_RICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/><!--เป็นตัวช่วยส่งค่าเมื่อเรียกจากแอปอื่น-->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
         </activity>
-
-
 
         <activity
             android:name="th.or.nectec.thaiunitconverter.activity.CalculateActivity"
