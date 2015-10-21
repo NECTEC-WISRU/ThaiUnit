@@ -56,6 +56,9 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
     private LinearLayout moreOption;
     private LinearLayout customWeightLayout;
+
+    private LinearLayout resultLayout;
+
     private double wetRiceValue = 0;
     private double dryRiceValue;
 
@@ -111,6 +114,8 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         moreOption = (LinearLayout) rootView.findViewById(R.id.more_option);
         customWeightLayout = (LinearLayout) rootView.findViewById(R.id.custom_weight_layout);
 
+        resultLayout = (LinearLayout) rootView.findViewById(R.id.result_layout);
+
         wetRiceButton.setOnClickListener(this);
         plusButton.setOnClickListener(this);
         minusButton.setOnClickListener(this);
@@ -133,24 +138,9 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void afterTextChanged(Editable s) {
-                answerSumaryDryView = (TextView) rootView.findViewById(R.id.answer_weight_dry_sumary);
 
-                double humidPercent = 0;
 
-                String humidPercentStr = humidPercentView.getText().toString();
-
-                if (TextUtils.isEmpty(humidPercentStr)) {
-                    //humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
-                    Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
-                } else {
-                    humidPercent = Double.valueOf(humidPercentStr);
-                    if (humidPercent >= STANDARD_PERCENT) {
-                        dryRiceValue = calculateDryResult(humidPercent, wetRiceValue);
-                        answerSumaryDryView.setText(String.format(getString(R.string.answer_calculate_dry_result), df.format(dryRiceValue)));
-                    } else {
-                        Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
-                    }
-                }
+                calculateAndShowDryResult();
             }
         });
 
@@ -167,10 +157,32 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     //do something
                     calculateAndShowWetRice();
+                    calculateAndShowDryResult();
                 }
                 return false;
             }
         });
+    }
+
+    private void calculateAndShowDryResult() {
+        double humidPercent = 0;
+
+        String humidPercentStr = humidPercentView.getText().toString();
+
+        if (TextUtils.isEmpty(humidPercentStr)) {
+            //humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
+            Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
+        } else {
+            humidPercent = Double.valueOf(humidPercentStr);
+            if (humidPercent >= STANDARD_PERCENT) {
+                dryRiceValue = calculateDryResult(humidPercent, wetRiceValue);
+                answerSumaryDryView.setText(String.format(getString(R.string.answer_calculate_dry_result), df.format(dryRiceValue)));
+                answerSumaryDryView.setVisibility(View.VISIBLE);
+            } else {
+                Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
+                answerSumaryDryView.setVisibility(View.GONE);
+            }
+        }
     }
 
     private double calculateDryResult(double percent, double dryRiceValue) {
@@ -184,21 +196,13 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         switch (view.getId()) {
             case R.id.calculate_wet_button:
                 calculateAndShowWetRice();
+                calculateAndShowDryResult();
                 break;
             case R.id.plus:
-                double a = Double.parseDouble(riceQuantity.getText().toString());
-                double b = a + 1;
-                String outputPlus = df.format(b);
-                riceQuantity.setText(outputPlus);
+                increaseRiceQuantity();
                 break;
             case R.id.minus:
-                double c = Double.parseDouble(riceQuantity.getText().toString());
-                double d = c - 1;
-                String outoutMinus = df.format(d);
-                riceQuantity.setText(outoutMinus);
-                if (d < 0) {
-                    riceQuantity.setText("0");
-                }
+                decreaseRiceQuantity();
                 break;
             case R.id.more_option:
                 //Toast.makeText(getActivity() , "hello", Toast.LENGTH_SHORT).show();
@@ -206,22 +210,55 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 break;
 
             case R.id.plus_percent:
-                double e = Double.parseDouble(humidPercentView.getText().toString());
-                double f = e + 1;
-                String outputPlusPercent = df.format(f);
-                humidPercentView.setText(outputPlusPercent);
+                increaseHumidPercent();
                 break;
             case R.id.minus_percent:
-                double g = Double.parseDouble(humidPercentView.getText().toString());
-                double h = g - 1;
-                String outoutMinusPercent = df.format(h);
-                humidPercentView.setText(outoutMinusPercent);
-                if (h < STANDARD_PERCENT) {
-                    humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
-                    //Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
-                }
+                decreaseHumidPercent();
                 break;
         }
+    }
+
+    private void decreaseHumidPercent() {
+        String humidPercentStr = humidPercentView.getText().toString();
+        double g = TextUtils.isEmpty(humidPercentStr)
+                ? 0 : Double.parseDouble(humidPercentStr);
+        double h = g - 1;
+        String outoutMinusPercent = df.format(h);
+        humidPercentView.setText(outoutMinusPercent);
+        if (h < STANDARD_PERCENT) {
+            humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
+            //Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void increaseHumidPercent() {
+        String humidPercentStr = humidPercentView.getText().toString();
+        double e = TextUtils.isEmpty(humidPercentStr)
+                ? 0 : Double.parseDouble(humidPercentStr);
+        double f = e + 1;
+        String outputPlusPercent = df.format(f);
+        humidPercentView.setText(outputPlusPercent);
+    }
+
+    private void decreaseRiceQuantity() {
+        String riceQuantityStr = riceQuantity.getText().toString();
+        double c = TextUtils.isEmpty(riceQuantityStr)
+                ? 0 : Double.parseDouble(riceQuantityStr);
+        double d = c - 1;
+        String outoutMinus = df.format(d);
+        riceQuantity.setText(outoutMinus);
+        if (d < 0) {
+            riceQuantity.setText("0");
+        }
+    }
+
+    private void increaseRiceQuantity() {
+        String riceQuantityStr = riceQuantity.getText().toString();
+        double a = TextUtils.isEmpty(riceQuantityStr)
+                ? 0 : Double.parseDouble(riceQuantityStr);
+        double b = a + 1;
+        String outputPlus = df.format(b);
+        riceQuantity.setText(outputPlus);
     }
 
     private void calculateAndShowWetRice() {
@@ -230,13 +267,19 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
         hideSoftKeyboard();
 
+        String riceQuantityStr = riceQuantity.getText().toString();
+
         if (selectedView == null) {
             Toast.makeText(getActivity(), String.format(getString(R.string.please_select_unit_factor), unitStr), Toast.LENGTH_SHORT).show();
+        }else if(TextUtils.isEmpty(riceQuantityStr)){
+            Toast.makeText(getActivity(), String.format(getString(R.string.please_define_rice_quantity), unitStr), Toast.LENGTH_SHORT).show();
         } else {
             unitFactor = ((CustomWeightView) singleChoiceViewStateController.getSelectedCustomWeightView()).getWeightFactor();
             wetRiceValue = calculateWetRice(unitFactor, riceQuantity);
-            sumaryView.setText(String.format(getString(R.string.calculate_wet_result), df.format(unitFactor), df.format(Double.valueOf(riceQuantity.getText().toString())), unitStr));
+            sumaryView.setText(String.format(getString(R.string.calculate_wet_result), df.format(unitFactor), df.format(Double.valueOf(riceQuantityStr)), unitStr));
             answerSumaryView.setText(String.format(getString(R.string.answer_calculate_wet_result), df.format(wetRiceValue)));
+
+            resultLayout.setVisibility(View.VISIBLE);
         }
     }
 

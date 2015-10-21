@@ -139,138 +139,147 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.15"
-        android:visibility="visible"
-        android:weightSum="1">
+        android:id="@+id/result_layout"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.15"
+            android:visibility="visible"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/layout_marginBottom"
+                android:layout_marginTop="@dimen/layout_marginTop"
+                android:gravity="center_vertical"
+                android:text="น้ำหนักข้าวสด"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_body_big"
+                android:background="@color/white"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:gravity="center_vertical|center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/weight_wet_sumary"
+                android:textSize="@dimen/text_body"
+                android:gravity="center"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/answer_weight_wet_sumary"
+                android:textSize="50dp"
+                android:textColor="@color/red1" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:text="ความชื้น"
+            android:textSize="@dimen/text_body_big"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
             android:layout_marginBottom="@dimen/layout_marginBottom"
             android:layout_marginTop="@dimen/layout_marginTop"
-            android:gravity="center_vertical"
-            android:text="น้ำหนักข้าวสด"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_body_big"
-            android:background="@color/white"
-            android:paddingLeft="10dp"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp" />
-    </LinearLayout>
+            android:paddingBottom="10dp"/>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|center"
-        android:gravity="center_vertical|center_horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/weight_wet_sumary"
-            android:textSize="@dimen/text_body"
-            android:gravity="center"
-            android:textColor="@color/black" />
+            android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/answer_weight_wet_sumary"
-            android:textSize="50dp"
-            android:textColor="@color/red1" />
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:id="@+id/minus_percent"
+                android:textSize="@dimen/text_body"/>
 
-    </LinearLayout>
+            <EditText
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:inputType="number|numberDecimal"
+                android:ems="10"
+                android:id="@+id/rice_humid_percent"
+                android:textSize="@dimen/text_body_big"
+                android:numeric="decimal"
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:text="0"
+                />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ความชื้น"
-        android:textSize="@dimen/text_body_big"
-        android:paddingLeft="10dp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="@dimen/layout_marginBottom"
-        android:layout_marginTop="@dimen/layout_marginTop"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"/>
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/plus_percent"
+                android:textSize="@dimen/text_body_big"/>
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="เปอร์เซนต์"
+                android:id="@+id/textView8"
+                android:textSize="@dimen/text_body_big"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/layout_marginLeft" />
+
+        </LinearLayout>
 
         <Button
-            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-"
-            android:id="@+id/minus_percent"
-            android:textSize="@dimen/text_body"/>
-
-        <EditText
-            android:layout_width="105dp"
-            android:layout_height="wrap_content"
-            android:inputType="number|numberDecimal"
-            android:ems="10"
-            android:id="@+id/rice_humid_percent"
-            android:textSize="@dimen/text_body_big"
-            android:numeric="decimal"
-            android:gravity="center"
-            android:imeOptions="actionDone"
-            android:text="0"
-            />
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:id="@+id/plus_percent"
-            android:textSize="@dimen/text_body_big"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="เปอร์เซนต์"
-            android:id="@+id/textView8"
-            android:textSize="@dimen/text_body_big"
-            android:textColor="@color/black"
-            android:layout_marginLeft="@dimen/layout_marginLeft" />
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="คำนวณน้ำหนักข้าวแห้ง"
-        android:id="@+id/calculate_dry_button"
-        android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/text_body"
-        android:visibility="gone"/>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left|center"
-        android:gravity="center_vertical|center_horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/weight_dry_sumary"
+            android:text="คำนวณน้ำหนักข้าวแห้ง"
+            android:id="@+id/calculate_dry_button"
+            android:layout_gravity="center_horizontal"
             android:textSize="@dimen/text_body"
-            android:gravity="center"
-            android:textColor="@color/black" />
+            android:visibility="gone"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/answer_weight_dry_sumary"
-            android:textSize="50dp"
-            android:textColor="@color/red1" />
+            android:layout_gravity="left|center"
+            android:gravity="center_vertical|center_horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/weight_dry_sumary"
+                android:textSize="@dimen/text_body"
+                android:gravity="center"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/answer_weight_dry_sumary"
+                android:textSize="50dp"
+                android:textColor="@color/red1" />
+
+        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>
