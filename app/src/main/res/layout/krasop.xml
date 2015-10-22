@@ -4,11 +4,12 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:inputType="number"
+    >
 
 
     <TextView
-        android:id="@+id/textView7"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/layout_marginBottom"
@@ -17,112 +18,50 @@
         android:text="เลือกขนาด"
         android:textColor="@color/black"
         android:textSize="@dimen/text_body_big"
-
-        android:background="@color/light_pink"
-        android:paddingLeft="10dp" />
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
     <HorizontalScrollView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/horizontalScrollView"
-        android:layout_gravity="center_horizontal" >
+        android:id="@+id/horizontalScrollView" >
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:id="@+id/custom_weight_layout"/>
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:gravity="center"
+                android:id="@+id/more_option">
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:id="@+id/imageView7"
-                    android:src="@drawable/krasop"
-                    android:paddingTop="50dp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="กระสอบ (30 ก.ก.)"
-                    android:id="@+id/textView8"
-                    android:textSize="@dimen/text_body_choice"
-                    android:textColor="@color/dark_blue"
-                    android:gravity="clip_vertical|center_horizontal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_column="1">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:id="@+id/imageView8"
-                    android:src="@drawable/krasop"
-                    android:paddingTop="25dp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="กระสอบ (50 ก.ก.)"
-                    android:id="@+id/textView9"
-                    android:textSize="@dimen/text_body_choice"
-                    android:textColor="@color/dark_blue"
-                    android:gravity="clip_vertical|center_horizontal"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_column="1">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:id="@+id/imageView9"
-                    android:src="@drawable/krasop"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="กระสอบ (100 ก.ก.)"
-                    android:id="@+id/textView10"
-                    android:textSize="@dimen/text_body_choice"
-                    android:textColor="@color/dark_blue"
-                    android:gravity="clip_vertical|center_horizontal"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="200dp"
-                android:layout_height="match_parent"
-                android:layout_column="3">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:id="@+id/imageView10"
+                    android:layout_height="100dp"
                     android:src="@drawable/plus"
-                    android:padding="30dp" />
+                    android:longClickable="false"
+                    android:paddingTop="20dp" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="อื่นๆ"
-                    android:id="@+id/textView11"
                     android:textColor="@color/dark_blue"
-                    android:textSize="@dimen/text_body_choice"
+                    android:textSize="@dimen/text_body_big"
                     android:gravity="clip_vertical|center_horizontal"/>
             </LinearLayout>
+
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -135,85 +74,205 @@
         android:text="จำนวน"
         android:textColor="@color/black"
         android:textSize="@dimen/text_body_big"
-        android:id="@+id/textView12"
-        android:background="@color/light_pink"
-        android:paddingLeft="10dp" />
+        android:background="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.16"
         android:gravity="center"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:layout_weight="0.08">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:id="@+id/minus"
+            android:textSize="@dimen/text_body"/>
 
         <EditText
-            android:layout_width="123dp"
+            android:layout_width="105dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="number|numberDecimal"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/rice_quantity"
             android:layout_gravity="center"
-            android:textSize="@dimen/text_body"
-            android:layout_weight="0.07"
-            android:numeric="decimal" />
+            android:textSize="@dimen/text_body_big"
+            android:numeric="decimal"
+            android:gravity="center"
+            android:imeOptions="actionDone"
+            android:text="0"
+            />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:id="@+id/plus"
+            android:textSize="@dimen/text_body_big"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="กระสอบ"
-            android:id="@+id/textView13"
             android:layout_gravity="center"
-            android:textSize="@dimen/text_body_answer"/>
+            android:textSize="@dimen/text_body_big"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
-        android:layout_gravity="center_horizontal" />
+        android:text="คำนวณน้ำหนักข้าวสด"
+        android:id="@+id/calculate_wet_button"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/text_body"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/weight_layout"
-        android:layout_weight="0.30">
+        android:layout_gravity="left|center"
+        android:gravity="center_vertical|center_horizontal"
+        android:visibility="gone"
+        android:id="@+id/wet_result_layout">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView19"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="@dimen/layout_marginBottom"
             android:layout_marginTop="@dimen/layout_marginTop"
             android:gravity="center_vertical"
-            android:text="น้ำหนัก"
+            android:text="น้ำหนักข้าวสด"
             android:textColor="@color/black"
             android:textSize="@dimen/text_body_big"
-            android:background="@color/light_pink"
-            android:paddingLeft="10dp" />
+            android:background="@color/white"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weight_wet_sumary"
+            android:textSize="@dimen/text_body"
+            android:gravity="center"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/answer_weight_wet_sumary"
+            android:textSize="50dp"
+            android:textColor="@color/red1" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
-            android:id="@+id/button2"
-            android:layout_gravity="center_horizontal" />
+            android:text="คำนวณน้ำหนักร่วมกับความชื้น"
+            android:id="@+id/calculate_dry_button"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/text_body"
+            android:visibility="visible"/>
+
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/dry_result_layout"
+        android:visibility="gone">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView20" />
-    </LinearLayout>
+            android:text="ความชื้น"
+            android:textSize="@dimen/text_body_big"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="@dimen/layout_marginBottom"
+            android:layout_marginTop="@dimen/layout_marginTop"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:id="@+id/minus_percent"
+                android:textSize="@dimen/text_body"/>
+
+            <EditText
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:inputType="number|numberDecimal"
+                android:ems="10"
+                android:id="@+id/rice_humid_percent"
+                android:textSize="@dimen/text_body_big"
+                android:numeric="decimal"
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:text="0"
+                />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/plus_percent"
+                android:textSize="@dimen/text_body_big"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="เปอร์เซนต์"
+                android:id="@+id/textView8"
+                android:textSize="@dimen/text_body_big"
+                android:textColor="@color/black"
+                android:layout_marginLeft="@dimen/layout_marginLeft" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:gravity="center_vertical|center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/weight_dry_sumary"
+                android:textSize="@dimen/text_body"
+                android:gravity="center"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/answer_weight_dry_sumary"
+                android:textSize="50dp"
+                android:textColor="@color/red1" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

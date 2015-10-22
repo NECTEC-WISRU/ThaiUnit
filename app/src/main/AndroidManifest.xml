@@ -5,25 +5,40 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:label="แอพกระสอบข้าว" >
         <activity
             android:name="th.or.nectec.thaiunitconverter.activity.Main"
-            android:label="@string/app_name" >
+            android:label="แอพกระสอบข้าว"
+            android:theme="@style/AppTheme.FullScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter>
+                <action android:name="unitconverter.intent.action.CALCULATE_DRY_RICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT"/><!--เป็นตัวช่วยส่งค่าเมื่อเรียกจากแอปอื่น-->
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
         </activity>
-
-
 
         <activity
             android:name="th.or.nectec.thaiunitconverter.activity.CalculateActivity"
-            android:label="UnitConverterNew" >
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="unitconverter.intent.action.CALCULATE" /><!--เป็นการจำแนกประเภทการกระทำของintentที่จะใช้งานคำนวณค.ชื้น-->
                 <category android:name="unitconverter.intent.category.KWIAN" />
+                <category android:name="unitconverter.intent.category.KRASOP" />
+                <category android:name="unitconverter.intent.category.TUNG" />
                 <category android:name="android.intent.category.DEFAULT" /><!--เป็นการจำแนกตามหมวดหมู่ที่จะกระทำ-->
             </intent-filter>
         </activity>

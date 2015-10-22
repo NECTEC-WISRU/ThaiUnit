@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">UnitConverterNew</string>
+    <string name="app_name">แปลงหน่วยไทย</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="krasop_to_kg">แปลงหน่วยจากกระสอบเป็นกิโลกรัม</string>
+    <string name="tung_to_kg">แปลงหน่วยจากถังเป็นกิโลกรัม</string>
 
     <string-array name="thai_unit">
         <item>กระสอบ</item>
@@ -11,4 +14,20 @@
         <item>ปี๊บ</item>
         <item>เกวียน</item>
     </string-array>
+
+    <string name="krasop">กระสอบ</string>
+    <string name="tung">ถัง</string>
+
+    <string name="please_select_unit_factor">กรุณาเลือกขนาดของ%1$s</string>
+    <string name="please_define_unit_factor">กรุณากำหนดน้ำหนักของ%1$sที่จะเพิ่ม</string>
+    <string name="calculate_wet_result">%1$s กิโลกรัม × %2$s %3$s จะได้</string>
+    <string name="answer_calculate_wet_result">%1$s กิโลกรัม</string>
+
+    <string name="please_define_rice_quantity">กรุณาระบุจำนวน%1$s</string>
+
+    <string name="answer_calculate_dry_result">%1$s กิโลกรัม</string>
+
+    <string name="minimum_percent">ค่าความชื้นมาตราฐานเท่ากับ %1$s</string>
+    <string name="please_define_humid_percent">กรุณากำหนดเปอร์เซนต์ความชื้น</string>
+
 </resources>

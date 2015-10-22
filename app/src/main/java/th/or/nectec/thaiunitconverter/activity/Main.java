@@ -6,21 +6,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import th.or.nectec.thaiunitconverter.fragment.Aum;
-import th.or.nectec.thaiunitconverter.fragment.Krasop;
-import th.or.nectec.thaiunitconverter.fragment.Kwian;
-import th.or.nectec.thaiunitconverter.fragment.Peep;
 import th.or.nectec.thaiunitconverter.R;
-import th.or.nectec.thaiunitconverter.fragment.Tung;
 
 public class Main extends AppCompatActivity {
 
     private LinearLayout krasop, kwian, aum, tung, peep;
 
+    int intentResult = 1;
+
+    Intent calculateIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainpage);
+
+        getSupportActionBar().hide();
 
         krasop = (LinearLayout) findViewById(R.id.krasopButton);
         kwian = (LinearLayout) findViewById(R.id.kwianButton);
@@ -29,46 +30,41 @@ public class Main extends AppCompatActivity {
         peep = (LinearLayout) findViewById(R.id.peepButton);
 
 
-        kwian.setOnClickListener(new View.OnClickListener() {
+        krasop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), CalculateActivity.class);
-                startActivity(i);
-            }
-        });
-
-        /*krasop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Krasop.class);
-                startActivity(i);
-            }
-        });
-
-
-        aum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Aum.class);
-                startActivity(i);
+                Intent calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
+                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+                    calculateIntent.putExtra("is_launch_from_other", true);
+                }
+                calculateIntent.addCategory("unitconverter.intent.category.KRASOP");
+                startActivityForResult(calculateIntent, intentResult);
             }
         });
 
         tung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Tung.class);
-                startActivity(i);
+                Intent calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
+                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+                    calculateIntent.putExtra("is_launch_from_other", true);
+                }
+                calculateIntent.addCategory("unitconverter.intent.category.TUNG");
+                startActivityForResult(calculateIntent, intentResult);
             }
         });
+    }
 
-        peep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Peep.class);
-                startActivity(i);
-            }
-        });*/
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE") && resultCode==RESULT_OK) {
+            setResult(RESULT_OK, data);
+            finish();
+        }
     }
 }
+
 
