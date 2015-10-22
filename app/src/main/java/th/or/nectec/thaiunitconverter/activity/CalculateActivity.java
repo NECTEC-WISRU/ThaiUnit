@@ -1,22 +1,16 @@
 package th.or.nectec.thaiunitconverter.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Set;
 
 import th.or.nectec.thaiunitconverter.R;
-import th.or.nectec.thaiunitconverter.fragment.Krasop;
-import th.or.nectec.thaiunitconverter.fragment.Kwian;
-import th.or.nectec.thaiunitconverter.fragment.Tung;
+import th.or.nectec.thaiunitconverter.fragment.CalculateFragment;
 
 /**
  * Created by User on 7/10/2558.
@@ -27,6 +21,10 @@ public class CalculateActivity extends AppCompatActivity {
 
     private ArrayList<String> ThaiUnit = new ArrayList<String>();
     private String[] unitArray;
+
+    String unitStr;
+    int unitIcon;
+    double[] defaultUnitFactor;
 
     @Override
 
@@ -62,13 +60,18 @@ public class CalculateActivity extends AppCompatActivity {
         if (intentCategories == null){
             
         } else if (intentCategories.contains("unitconverter.intent.category.KRASOP")) {
-            fragmentTransaction.replace(R.id.container, Krasop.newInstance()).commit();
+            unitStr = getString(R.string.krasop);
+            unitIcon = R.drawable.krasop;
+            defaultUnitFactor = new double[]{30, 50, 100};
+            fragmentTransaction.replace(R.id.container, CalculateFragment.newInstance(unitStr, unitIcon, defaultUnitFactor)).commit();
             getSupportActionBar().setTitle(R.string.krasop_to_kg);
         } else if (intentCategories.contains("unitconverter.intent.category.TUNG")) {
-            fragmentTransaction.replace(R.id.container, Tung.newInstance()).commit();
+            unitStr = getString(R.string.tung);
+            unitIcon = R.drawable.tung;
+            defaultUnitFactor = new double[]{10, 15};
+            fragmentTransaction.replace(R.id.container, CalculateFragment.newInstance(unitStr, unitIcon, defaultUnitFactor)).commit();
             getSupportActionBar().setTitle(R.string.tung_to_kg);
         }
-
     }
 }
 

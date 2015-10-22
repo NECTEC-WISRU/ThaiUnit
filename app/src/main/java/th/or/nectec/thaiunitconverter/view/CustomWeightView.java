@@ -8,7 +8,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
@@ -16,12 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
 
 import th.or.nectec.thaiunitconverter.R;
 
-public class CustomWeightView extends RelativeLayout {
+public class CustomWeightView extends RelativeLayout implements SingleChoiceViewStateController.CustomCheckedView{
 
     private TextView weightText;
     private ImageView weightIcon;
@@ -62,44 +59,26 @@ public class CustomWeightView extends RelativeLayout {
 
     }
 
-    public void setCustomWeightInfo(String weightTextStr, Drawable weightIconDrawable, double weightFactor) {
+    public void setCustomWeightInfo(Drawable weightIconDrawable, double weightFactor) {
         this.weightFactor = weightFactor;
-
         String pattern = "###,###.##";
         DecimalFormat df = new DecimalFormat(pattern);
         String output = df.format(weightFactor);
 
-        weightText.setText(weightTextStr + " (" + df.format(weightFactor) + " กก.)");
+        weightText.setText(output + " กก.");
         weightIcon.setImageDrawable(weightIconDrawable);
     }
 
-    public void setCustomWeightInfoByResource(@StringRes int weightTextId, @DrawableRes int weightIconId, double weightFactor) {
-        String weightTextStr = getResources().getString(weightTextId);
+    public void setCustomWeightInfoByResource(@DrawableRes int weightIconId, double weightFactor) {
         Drawable weightIconDrawable = getResources().getDrawable(weightIconId);
-
-        setCustomWeightInfo(weightTextStr, weightIconDrawable, weightFactor);
+        setCustomWeightInfo(weightIconDrawable, weightFactor);
     }
 
-    public void setCustomWeightText(String weightTextStr) {
-        weightText.setText(weightTextStr);
-    }
-
-    public void setCustomWeightText(@StringRes int weightTextId) {
-        weightText.setText(weightTextId);
-    }
-
-    public void setCustomWeightDrawable(Drawable weightIconDrawable) {
-        weightIcon.setImageDrawable(weightIconDrawable);
-    }
-
-    public void setCustomWeightDrawable(@DrawableRes int weightIconId) {
-        weightIcon.setImageResource(weightIconId);
-    }
-
+    @Override
     public void setChecked(boolean checked) {
         this.checked = checked;
         if (checked) {
-            this.setBackgroundColor(getResources().getColor(R.color.light_gray));
+            this.setBackground(getResources().getDrawable(R.drawable.circle_background));
         } else {
             this.setBackgroundColor(Color.TRANSPARENT);
         }

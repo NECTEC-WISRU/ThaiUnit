@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <ImageView
         android:id="@+id/weight_icon"
         android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_height="100dp" />
 
     <TextView
         android:id="@+id/weight_text"
@@ -16,5 +17,5 @@
         android:gravity="center"
         android:text="New Text"
         android:textColor="@color/dark_blue"
-        android:textSize="@dimen/text_body_choice" />
+        android:textSize="@dimen/text_body_big" />
 </LinearLayout>

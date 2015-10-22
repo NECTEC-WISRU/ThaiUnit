@@ -12,6 +12,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
@@ -30,7 +31,7 @@ public class KrasopLaunchTest {
 
     @Test
     public void เปิดหน้าเมนูหลักแล้วกดปุ่มกระสอบต้องเปิดหน้าคำนวณกระสอบ(){
-        onView(withText("กระสอบ"))
+        onView(withId(R.id.krasopButton))
                 .perform(click());
         onView(withText(R.string.krasop_to_kg))
                 .check(matches(isDisplayed()));
