@@ -30,30 +30,14 @@ public class Main extends AppCompatActivity {
         peep = (LinearLayout) findViewById(R.id.peepButton);
 
 
-        calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
-        if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
-            calculateIntent.putExtra("is_launch_from_other", true);
-        }
-        kwian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calculateIntent.addCategory("unitconverter.intent.category.KWIAN");
-                startActivityForResult(calculateIntent, intentResult);
-            }
-        });
-
         krasop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
+                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+                    calculateIntent.putExtra("is_launch_from_other", true);
+                }
                 calculateIntent.addCategory("unitconverter.intent.category.KRASOP");
-                startActivityForResult(calculateIntent, intentResult);
-            }
-        });
-
-
-        aum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 startActivityForResult(calculateIntent, intentResult);
             }
         });
@@ -61,18 +45,16 @@ public class Main extends AppCompatActivity {
         tung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
+                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+                    calculateIntent.putExtra("is_launch_from_other", true);
+                }
                 calculateIntent.addCategory("unitconverter.intent.category.TUNG");
                 startActivityForResult(calculateIntent, intentResult);
             }
         });
-
-        peep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivityForResult(calculateIntent, intentResult);
-            }
-        });
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
