@@ -31,7 +31,7 @@ public class Main extends AppCompatActivity {
 
 
         calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
-        if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+        if (getIntent().getAction()!=null && getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
             calculateIntent.putExtra("is_launch_from_other", true);
         }
         kwian.setOnClickListener(new View.OnClickListener() {

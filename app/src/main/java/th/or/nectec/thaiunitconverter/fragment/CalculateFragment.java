@@ -303,7 +303,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
         final EditText edittext = new EditText(getActivity());
         edittext.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-
+        edittext.setId(R.id.custom_unit_factor);
         alert.setTitle("ใส่ขนาดที่ต้องการ");
         alert.setView(edittext);
         alert.setPositiveButton("ตกลง", null);
