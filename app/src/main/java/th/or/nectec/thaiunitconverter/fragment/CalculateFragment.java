@@ -59,7 +59,8 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     private LinearLayout moreOption;
     private LinearLayout customWeightLayout;
 
-    private LinearLayout resultLayout;
+    private LinearLayout dryResultLayout;
+    private LinearLayout wetResultLayout;
 
     private double wetRiceValue = 0;
     private double dryRiceValue;
@@ -110,26 +111,47 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         plusButton = (Button) rootView.findViewById(R.id.plus);
         minusButton = (Button) rootView.findViewById(R.id.minus);
 
+        dryRiceButton = (Button) rootView.findViewById(R.id.calculate_dry_button);
         plusPercentButton = (Button) rootView.findViewById(R.id.plus_percent);
         minusPercentButton = (Button) rootView.findViewById(R.id.minus_percent);
 
         moreOption = (LinearLayout) rootView.findViewById(R.id.more_option);
         customWeightLayout = (LinearLayout) rootView.findViewById(R.id.custom_weight_layout);
 
-        resultLayout = (LinearLayout) rootView.findViewById(R.id.result_layout);
+        wetResultLayout = (LinearLayout) rootView.findViewById(R.id.wet_result_layout);
+        dryResultLayout = (LinearLayout) rootView.findViewById(R.id.dry_result_layout);
 
         wetRiceButton.setOnClickListener(this);
         plusButton.setOnClickListener(this);
         minusButton.setOnClickListener(this);
         moreOption.setOnClickListener(this);
 
+        dryRiceButton.setOnClickListener(this);
         plusPercentButton.setOnClickListener(this);
         minusPercentButton.setOnClickListener(this);
+
+        riceQuantity.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                wetResultLayout.setVisibility(View.GONE);
+                dryResultLayout.setVisibility(View.GONE);
+            }
+        });
 
 
         humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
         humidPercentView.addTextChangedListener(new TextWatcher() {
-
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -162,6 +184,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                     //do something
                     calculateAndShowWetRice();
                     calculateAndShowDryResult();
+                    showResultLayout();
                 }
                 return false;
             }
@@ -184,7 +207,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 answerSumaryDryView.setVisibility(View.VISIBLE);
             } else {
                 Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
-                answerSumaryDryView.setVisibility(View.GONE);
+                //answerSumaryDryView.setVisibility(View.GONE);
             }
         }
     }
@@ -200,8 +223,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         switch (view.getId()) {
             case R.id.calculate_wet_button:
                 calculateAndShowWetRice();
-                calculateAndShowDryResult();
-
+                showResultLayout();
                 break;
             case R.id.plus:
                 increaseRiceQuantity();
@@ -214,6 +236,12 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 showCustomWeightDialog();
                 break;
 
+            case R.id.calculate_dry_button:
+                calculateAndShowDryResult();
+                dryResultLayout.setVisibility(View.VISIBLE);
+                //answerSumaryDryView.setVisibility(View.GONE);
+
+                break;
             case R.id.plus_percent:
                 increaseHumidPercent();
                 break;
@@ -221,6 +249,11 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 decreaseHumidPercent();
                 break;
         }
+    }
+
+    private void showResultLayout() {
+        wetResultLayout.setVisibility(View.VISIBLE);
+        wetRiceButton.setVisibility(View.VISIBLE);
     }
 
     private void decreaseHumidPercent() {
@@ -284,7 +317,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
             sumaryView.setText(String.format(getString(R.string.calculate_wet_result), df.format(unitFactor), df.format(Double.valueOf(riceQuantityStr)), unitStr));
             answerSumaryView.setText(String.format(getString(R.string.answer_calculate_wet_result), df.format(wetRiceValue)));
 
-            resultLayout.setVisibility(View.VISIBLE);
+            //resultLayout.setVisibility(View.VISIBLE);
         }
 
         boolean isLaunchFromOther = getActivity().getIntent().getBooleanExtra("is_launch_from_other", false);

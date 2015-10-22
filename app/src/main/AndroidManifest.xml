@@ -10,7 +10,8 @@
         <activity
             android:name="th.or.nectec.thaiunitconverter.activity.Main"
             android:label="แอพกระสอบข้าว"
-            android:theme="@style/AppTheme.FullScreen">
+            android:theme="@style/AppTheme.FullScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,6 +32,7 @@
         <activity
             android:name="th.or.nectec.thaiunitconverter.activity.CalculateActivity"
             android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="unitconverter.intent.action.CALCULATE" /><!--เป็นการจำแนกประเภทการกระทำของintentที่จะใช้งานคำนวณค.ชื้น-->

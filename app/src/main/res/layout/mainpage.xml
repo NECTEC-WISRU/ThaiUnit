@@ -175,7 +175,8 @@
                 android:layout_marginTop="@dimen/layout_marginTop"
                 android:background="@color/white"
                 android:clickable="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -212,7 +213,8 @@
                 android:layout_marginTop="@dimen/layout_marginTop"
                 android:background="@color/white"
                 android:clickable="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/imageView5"
@@ -237,6 +239,7 @@
                 android:background="@android:color/black"
                 android:layout_marginLeft="@dimen/layout_marginLeft"
                 android:layout_marginRight="@dimen/layout_marginRight"
+                android:visibility="gone"
                 />
 
             <LinearLayout
@@ -250,7 +253,8 @@
                 android:layout_marginTop="@dimen/layout_marginTop"
                 android:background="@color/white"
                 android:clickable="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/imageView6"

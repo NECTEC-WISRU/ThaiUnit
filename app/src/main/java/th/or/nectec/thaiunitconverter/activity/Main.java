@@ -30,38 +30,31 @@ public class Main extends AppCompatActivity {
         peep = (LinearLayout) findViewById(R.id.peepButton);
 
 
-        calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
-        if (getIntent().getAction()!=null && getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
-            calculateIntent.putExtra("is_launch_from_other", true);
-        }
+        krasop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
+                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+                    calculateIntent.putExtra("is_launch_from_other", true);
+                }
+                calculateIntent.addCategory("unitconverter.intent.category.KRASOP");
+                startActivityForResult(calculateIntent, intentResult);
+            }
+        });
 
-        krasop.setOnClickListener(onMenuClickListener);
-        tung.setOnClickListener(onMenuClickListener);
-
-
-
+        tung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
+                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+                    calculateIntent.putExtra("is_launch_from_other", true);
+                }
+                calculateIntent.addCategory("unitconverter.intent.category.TUNG");
+                startActivityForResult(calculateIntent, intentResult);
+            }
+        });
     }
 
-
-
-    View.OnClickListener onMenuClickListener = new View.OnClickListener(){
-
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()){
-                case R.id.krasopButton:
-                    Intent intent = new Intent("unitconverter.intent.action.CALCULATE");
-                    intent.addCategory("unitconverter.intent.category.KWIAN");
-                    startActivityForResult(calculateIntent, intentResult);
-                    break;
-                case R.id.tungButton:
-                    Intent tungIntent = new Intent("unitconverter.intent.action.CALCULATE");
-                    calculateIntent.addCategory("unitconverter.intent.category.TUNG");
-                    startActivityForResult(calculateIntent, intentResult);
-                    break;
-            }
-        }
-    };
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -71,7 +64,6 @@ public class Main extends AppCompatActivity {
             setResult(RESULT_OK, data);
             finish();
         }
-
     }
 }
 
