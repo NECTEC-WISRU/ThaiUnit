@@ -41,8 +41,8 @@ public class KrasopCalculateToKgTest {
                 .perform(replaceText("4"));
         onView(withId(R.id.calculate_wet_button))
                 .perform(click());
-        onView(withText("30 กิโลกรัม * 4 กระสอบ = 120 กิโลกรัม"))
-                .check(matches(isDisplayed()));
+        onView(withId(R.id.answer_weight_wet_sumary))
+                .check(matches(withText("120 กิโลกรัม")));
     }
 
     @Test
@@ -53,8 +53,8 @@ public class KrasopCalculateToKgTest {
                 .perform(replaceText("4"));
         onView(withId(R.id.calculate_wet_button))
                 .perform(click());
-        onView(withText("50 กิโลกรัม * 4 กระสอบ = 200 กิโลกรัม"))
-                .check(matches(isDisplayed()));
+        onView(withId(R.id.answer_weight_wet_sumary))
+                .check(matches(withText("200 กิโลกรัม")));
     }
 
     @Test
@@ -65,8 +65,8 @@ public class KrasopCalculateToKgTest {
                 .perform(replaceText("4"));
         onView(withId(R.id.calculate_wet_button))
                 .perform(click());
-        onView(withText("100 กิโลกรัม * 4 กระสอบ = 400 กิโลกรัม"))
-                .check(matches(isDisplayed()));
+        onView(withId(R.id.answer_weight_wet_sumary))
+                .check(matches(withText("400 กิโลกรัม")));
     }
 
 
