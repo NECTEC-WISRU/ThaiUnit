@@ -25,7 +25,7 @@ public class MainMenuTest {
 
     @Before
     public void setUp(){
-        Intent intent = new Intent();
+        Intent intent = new Intent("android.intent.action.MAIN");
         mActivity = mActivityTestRule.launchActivity(intent);
     }
 
