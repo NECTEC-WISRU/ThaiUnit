@@ -187,7 +187,12 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
             CustomWeightView customWeightView = new CustomWeightView(getActivity());
             customWeightView.setCustomWeightInfoByResource(unitIcon, defaultUnitFactor[index]);
             customWeightLayout.addView(customWeightView);
+            
             singleChoiceViewStateController.addView(customWeightView);
+
+            if(index==0){
+                singleChoiceViewStateController.setCheckedItem(customWeightView);
+            }
         }
 
         riceQuantity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
