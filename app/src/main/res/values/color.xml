@@ -38,4 +38,6 @@
     <color name="purple2">#d503ff</color>
     <color name="pueple_pink">#d656fd</color>
     <color name="light_purple">#cc90fd</color>
+
+    <color name="transparent">#cc90fd</color>
 </resources>

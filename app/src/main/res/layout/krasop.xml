@@ -87,7 +87,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:weightSum="1"
-        android:layout_weight="0.08">
+        android:layout_weight="0.08"
+        android:paddingBottom="20sp">
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -95,6 +96,7 @@
             android:layout_height="wrap_content"
             android:text="-"
             android:id="@+id/minus"
+            android:background="@null"
             android:textSize="@dimen/text_body"/>
 
         <EditText
@@ -117,6 +119,7 @@
             android:layout_height="wrap_content"
             android:text="+"
             android:id="@+id/plus"
+            android:background="@null"
             android:textSize="@dimen/text_body_big"/>
 
         <TextView
@@ -145,7 +148,8 @@
         android:layout_gravity="left|center"
         android:gravity="center_vertical|center_horizontal"
         android:visibility="gone"
-        android:id="@+id/wet_result_layout">
+        android:id="@+id/wet_result_layout"
+        android:paddingBottom="20sp">
 
         <TextView
             android:layout_width="match_parent"
@@ -219,6 +223,7 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:id="@+id/minus_percent"
+                android:background="@null"
                 android:textSize="@dimen/text_body"/>
 
             <EditText
@@ -240,6 +245,7 @@
                 android:layout_height="wrap_content"
                 android:text="+"
                 android:id="@+id/plus_percent"
+                android:background="@null"
                 android:textSize="@dimen/text_body_big"/>
 
             <TextView
