@@ -4,12 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_krasop"
         android:theme="@style/AppTheme"
-        android:label="แอพกระสอบข้าว" >
+        android:label="กระสอบข้าว" >
         <activity
             android:name="th.or.nectec.thaiunitconverter.activity.Main"
-            android:label="แอพกระสอบข้าว"
+            android:label="กระสอบข้าว"
             android:theme="@style/AppTheme.FullScreen"
             android:screenOrientation="portrait">
             <intent-filter>
