@@ -49,7 +49,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     int unitIcon;
     double[] defaultUnitFactor;
 
-    private Button wetRiceButton;
+    private ButtonRectangle wetRiceButton;
     private ButtonRectangle finishCalculateButton;
     private Button plusButton;
     private Button minusButton;
@@ -119,7 +119,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         sumaryDryView = (TextView) rootView.findViewById(R.id.weight_dry_sumary);
         answerSumaryDryView = (TextView) rootView.findViewById(R.id.answer_weight_dry_sumary);
 
-        wetRiceButton = (Button) rootView.findViewById(R.id.calculate_wet_button);
+        wetRiceButton = (ButtonRectangle) rootView.findViewById(R.id.calculate_wet_button);
         plusButton = (Button) rootView.findViewById(R.id.plus);
         minusButton = (Button) rootView.findViewById(R.id.minus);
 
