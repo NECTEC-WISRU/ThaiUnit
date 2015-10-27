@@ -15,6 +15,9 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -65,6 +68,8 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
     private double wetRiceValue = 0;
     private double dryRiceValue;
+
+    boolean isShowDryOptionVisible = true;
 
     String pattern = "";
     DecimalFormat decimalFormatWithComma = new DecimalFormat("###,###.##");
@@ -135,6 +140,9 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         plusPercentButton.setOnClickListener(this);
         minusPercentButton.setOnClickListener(this);
 
+
+
+
         boolean isLaunchFromOther = getActivity().getIntent().getBooleanExtra("is_launch_from_other", false);
         if (isLaunchFromOther) {
             finishCalculateButton.setVisibility(View.VISIBLE);
@@ -142,6 +150,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
             finishCalculateButton.setVisibility(View.GONE);
         }
 
+        setHasOptionsMenu(true);
 
         riceQuantity.addTextChangedListener(new TextWatcher() {
             @Override
@@ -156,8 +165,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void afterTextChanged(Editable s) {
-                wetResultLayout.setVisibility(View.GONE);
-                dryResultLayout.setVisibility(View.GONE);
+                hideResultFragment();
             }
         });
 
@@ -165,10 +173,11 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         singleChoiceViewStateController.setOnCheckedChangeListener(new SingleChoiceViewStateController.OnCheckedChangeListener() {
             @Override
             public void onCheckChanged(View v) {
-                wetResultLayout.setVisibility(View.GONE);
-                dryResultLayout.setVisibility(View.GONE);
+                hideResultFragment();
             }
         });
+
+
 
 
         humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
@@ -185,8 +194,6 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void afterTextChanged(Editable s) {
-
-
                 calculateAndShowDryResult();
             }
         });
@@ -198,7 +205,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
             singleChoiceViewStateController.addView(customWeightView);
 
-            if(index==0){
+            if (index == 0) {
                 singleChoiceViewStateController.setCheckedItem(customWeightView);
             }
         }
@@ -215,6 +222,13 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 return false;
             }
         });
+    }
+
+    private void hideResultFragment(){
+        wetResultLayout.setVisibility(View.GONE);
+        dryResultLayout.setVisibility(View.GONE);
+        isShowDryOptionVisible = true;
+        getActivity().invalidateOptionsMenu();
     }
 
     private void calculateAndShowDryResult() {
@@ -240,6 +254,41 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
     private double calculateDryResult(double percent, double dryRiceValue) {
         return dryRiceValue * ((100 - percent) / (100 - STANDARD_PERCENT));
+    }
+
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.dry_visibility_menu, menu);
+
+        if (isShowDryOptionVisible){
+            menu.getItem(0).setVisible(true);
+            menu.getItem(1).setVisible(false);
+        }else{
+            menu.getItem(0).setVisible(false);
+            menu.getItem(1).setVisible(true);
+        }
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_show_dry_calculate :
+                dryResultLayout.setVisibility(View.VISIBLE);
+                calculateAndShowDryResult();
+                isShowDryOptionVisible = false;
+                break;
+            case R.id.action_hide_dry_calculate :
+                dryResultLayout.setVisibility(View.GONE);
+                isShowDryOptionVisible = true;
+
+                break;
+        }
+        getActivity().invalidateOptionsMenu();
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -435,6 +484,6 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         return wetRiceValue;
     }
 
-    ;
+
 }
 
