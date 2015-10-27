@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
@@ -44,7 +45,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     double[] defaultUnitFactor;
 
     private Button wetRiceButton;
-    private Button dryRiceButton;
+    private Button finishCalculateButton;
     private Button plusButton;
     private Button minusButton;
 
@@ -65,10 +66,14 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     private double wetRiceValue = 0;
     private double dryRiceValue;
 
-    String pattern = "###,###.##";
-    DecimalFormat df = new DecimalFormat(pattern);
+    String pattern = "";
+    DecimalFormat decimalFormatWithComma = new DecimalFormat("###,###.##");
+    DecimalFormat decimalFormatWithoutComma = new DecimalFormat("#.#");
 
     SingleChoiceViewStateController singleChoiceViewStateController = new SingleChoiceViewStateController();
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     double unitFactor = 0;
 
@@ -111,7 +116,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         plusButton = (Button) rootView.findViewById(R.id.plus);
         minusButton = (Button) rootView.findViewById(R.id.minus);
 
-        dryRiceButton = (Button) rootView.findViewById(R.id.calculate_dry_button);
+        finishCalculateButton = (Button) rootView.findViewById(R.id.finish_calculate);
         plusPercentButton = (Button) rootView.findViewById(R.id.plus_percent);
         minusPercentButton = (Button) rootView.findViewById(R.id.minus_percent);
 
@@ -126,9 +131,17 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         minusButton.setOnClickListener(this);
         moreOption.setOnClickListener(this);
 
-        dryRiceButton.setOnClickListener(this);
+        finishCalculateButton.setOnClickListener(this);
         plusPercentButton.setOnClickListener(this);
         minusPercentButton.setOnClickListener(this);
+
+        boolean isLaunchFromOther = getActivity().getIntent().getBooleanExtra("is_launch_from_other", false);
+        if (isLaunchFromOther) {
+            finishCalculateButton.setVisibility(View.VISIBLE);
+        } else {
+            finishCalculateButton.setVisibility(View.GONE);
+        }
+
 
         riceQuantity.addTextChangedListener(new TextWatcher() {
             @Override
@@ -203,7 +216,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
             humidPercent = Double.valueOf(humidPercentStr);
             if (humidPercent >= STANDARD_PERCENT) {
                 dryRiceValue = calculateDryResult(humidPercent, wetRiceValue);
-                answerSumaryDryView.setText(String.format(getString(R.string.answer_calculate_dry_result), df.format(dryRiceValue)));
+                answerSumaryDryView.setText(String.format(getString(R.string.answer_calculate_dry_result), decimalFormatWithComma.format(dryRiceValue)));
                 answerSumaryDryView.setVisibility(View.VISIBLE);
             } else {
                 Toast.makeText(getActivity(), String.format(getString(R.string.minimum_percent), STANDARD_PERCENT), Toast.LENGTH_SHORT).show();
@@ -213,7 +226,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     }
 
     private double calculateDryResult(double percent, double dryRiceValue) {
-        return dryRiceValue*((100-percent)/(100- STANDARD_PERCENT));
+        return dryRiceValue * ((100 - percent) / (100 - STANDARD_PERCENT));
     }
 
     @Override
@@ -236,10 +249,10 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 showCustomWeightDialog();
                 break;
 
-            case R.id.calculate_dry_button:
-                calculateAndShowDryResult();
-                dryResultLayout.setVisibility(View.VISIBLE);
-                //answerSumaryDryView.setVisibility(View.GONE);
+            case R.id.finish_calculate:
+                /*calculateAndShowDryResult();
+                dryResultLayout.setVisibility(View.VISIBLE);*/
+                launchResultActivity();
 
                 break;
             case R.id.plus_percent:
@@ -261,7 +274,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         double g = TextUtils.isEmpty(humidPercentStr)
                 ? 0 : Double.parseDouble(humidPercentStr);
         double h = g - 1;
-        String outoutMinusPercent = df.format(h);
+        String outoutMinusPercent = decimalFormatWithComma.format(h);
         humidPercentView.setText(outoutMinusPercent);
         if (h < STANDARD_PERCENT) {
             humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
@@ -274,7 +287,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         double e = TextUtils.isEmpty(humidPercentStr)
                 ? 0 : Double.parseDouble(humidPercentStr);
         double f = e + 1;
-        String outputPlusPercent = df.format(f);
+        String outputPlusPercent = decimalFormatWithComma.format(f);
         humidPercentView.setText(outputPlusPercent);
     }
 
@@ -283,8 +296,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         double c = TextUtils.isEmpty(riceQuantityStr)
                 ? 0 : Double.parseDouble(riceQuantityStr);
         double d = c - 1;
-        String outoutMinus = df.format(d);
-        riceQuantity.setText(outoutMinus);
+        riceQuantity.setText(decimalFormatWithoutComma.format(d));
         if (d < 0) {
             riceQuantity.setText("0");
         }
@@ -295,8 +307,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         double a = TextUtils.isEmpty(riceQuantityStr)
                 ? 0 : Double.parseDouble(riceQuantityStr);
         double b = a + 1;
-        String outputPlus = df.format(b);
-        riceQuantity.setText(outputPlus);
+        riceQuantity.setText(decimalFormatWithoutComma.format(b));
     }
 
     private void calculateAndShowWetRice() {
@@ -309,27 +320,22 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
         if (selectedView == null) {
             Toast.makeText(getActivity(), String.format(getString(R.string.please_select_unit_factor), unitStr), Toast.LENGTH_SHORT).show();
-        }else if(TextUtils.isEmpty(riceQuantityStr)){
+        } else if (TextUtils.isEmpty(riceQuantityStr)) {
             Toast.makeText(getActivity(), String.format(getString(R.string.please_define_rice_quantity), unitStr), Toast.LENGTH_SHORT).show();
         } else {
             unitFactor = ((CustomWeightView) singleChoiceViewStateController.getSelectedCustomWeightView()).getWeightFactor();
             wetRiceValue = calculateWetRice(unitFactor, riceQuantity);
-            sumaryView.setText(String.format(getString(R.string.calculate_wet_result), df.format(unitFactor), df.format(Double.valueOf(riceQuantityStr)), unitStr));
-            answerSumaryView.setText(String.format(getString(R.string.answer_calculate_wet_result), df.format(wetRiceValue)));
-
-            //resultLayout.setVisibility(View.VISIBLE);
+            sumaryView.setText(String.format(getString(R.string.calculate_wet_result), decimalFormatWithComma.format(unitFactor), decimalFormatWithComma.format(Double.valueOf(riceQuantityStr)), unitStr));
+            answerSumaryView.setText(String.format(getString(R.string.answer_calculate_wet_result), decimalFormatWithComma.format(wetRiceValue)));
         }
+    }
 
-        boolean isLaunchFromOther = getActivity().getIntent().getBooleanExtra("is_launch_from_other", false);
-
-        if (isLaunchFromOther){
-            Intent intent = new Intent();
-            intent.putExtra("wetRiceResult", wetRiceValue);//การส่งค่าตัวแปรให้กับactivityปลายทาง
-            intent.putExtra("dryRiceResult", dryRiceValue);
-            getActivity().setResult(Activity.RESULT_OK, intent);//เมื่อ activity success ก้จะส่ง intent ไป
-            getActivity().finish();
-        }
-
+    private void launchResultActivity() {
+        Intent intent = new Intent();
+        intent.putExtra("wetRiceResult", wetRiceValue);//การส่งค่าตัวแปรให้กับactivityปลายทาง
+        intent.putExtra("dryRiceResult", dryRiceValue);
+        getActivity().setResult(Activity.RESULT_OK, intent);//เมื่อ activity success ก้จะส่ง intent ไป
+        getActivity().finish();
     }
 
     private void showCustomWeightDialog() {

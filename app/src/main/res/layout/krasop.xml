@@ -130,10 +130,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="คำนวณน้ำหนักข้าวสด"
+        android:text="คำนวณ"
         android:id="@+id/calculate_wet_button"
         android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/text_body"/>
+        android:textSize="@dimen/text_body"
+        android:visibility="visible"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -177,8 +178,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="คำนวณน้ำหนักร่วมกับความชื้น"
-            android:id="@+id/calculate_dry_button"
+            android:text="เสร็จสิ้นการคำนวณ"
+            android:id="@+id/finish_calculate"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/text_body"
             android:visibility="visible"/>
