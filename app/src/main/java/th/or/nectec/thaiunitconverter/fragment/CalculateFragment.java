@@ -51,8 +51,8 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
     private ButtonRectangle wetRiceButton;
     private ButtonRectangle finishCalculateButton;
-    private Button plusButton;
-    private Button minusButton;
+    private ButtonRectangle plusButton;
+    private ButtonRectangle minusButton;
 
     private Button plusPercentButton, minusPercentButton;
 
@@ -120,8 +120,8 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         answerSumaryDryView = (TextView) rootView.findViewById(R.id.answer_weight_dry_sumary);
 
         wetRiceButton = (ButtonRectangle) rootView.findViewById(R.id.calculate_wet_button);
-        plusButton = (Button) rootView.findViewById(R.id.plus);
-        minusButton = (Button) rootView.findViewById(R.id.minus);
+        plusButton = (ButtonRectangle) rootView.findViewById(R.id.plus);
+        minusButton = (ButtonRectangle) rootView.findViewById(R.id.minus);
 
         finishCalculateButton = (ButtonRectangle) rootView.findViewById(R.id.finish_calculate);
         plusPercentButton = (Button) rootView.findViewById(R.id.plus_percent);

@@ -90,14 +90,13 @@
         android:layout_weight="0.08"
         android:paddingBottom="20sp">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
+        <com.gc.materialdesign.views.ButtonRectangle
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"
             android:id="@+id/minus"
-            android:background="@null"
-            android:textSize="@dimen/text_body"/>
+            android:background="@color/black"
+            android:textSize="8sp"/>
 
         <EditText
             android:layout_width="105dp"
@@ -113,14 +112,13 @@
             android:text="0"
             />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
+        <com.gc.materialdesign.views.ButtonRectangle
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+"
             android:id="@+id/plus"
-            android:background="@null"
-            android:textSize="@dimen/text_body_big"/>
+            android:background="@color/black"
+            android:textSize="8sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -135,7 +133,7 @@
     <com.gc.materialdesign.views.ButtonRectangle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#2db272"
+        android:background="@color/orange1"
         android:text="คำนวณ"
         android:textSize="12sp"
         android:layout_gravity="center_horizontal"
@@ -223,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:id="@+id/minus_percent"
-                android:background="@null"
+                android:background="@color/light_gray"
                 android:textSize="@dimen/text_body"/>
 
             <EditText
@@ -245,7 +243,7 @@
                 android:layout_height="wrap_content"
                 android:text="+"
                 android:id="@+id/plus_percent"
-                android:background="@null"
+                android:background="@color/light_gray"
                 android:textSize="@dimen/text_body_big"/>
 
             <TextView
