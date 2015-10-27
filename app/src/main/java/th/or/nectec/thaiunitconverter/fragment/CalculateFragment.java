@@ -156,7 +156,15 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
             @Override
             public void afterTextChanged(Editable s) {
+                wetResultLayout.setVisibility(View.GONE);
+                dryResultLayout.setVisibility(View.GONE);
+            }
+        });
 
+
+        singleChoiceViewStateController.setOnCheckedChangeListener(new SingleChoiceViewStateController.OnCheckedChangeListener() {
+            @Override
+            public void onCheckChanged(View v) {
                 wetResultLayout.setVisibility(View.GONE);
                 dryResultLayout.setVisibility(View.GONE);
             }
@@ -187,7 +195,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
             CustomWeightView customWeightView = new CustomWeightView(getActivity());
             customWeightView.setCustomWeightInfoByResource(unitIcon, defaultUnitFactor[index]);
             customWeightLayout.addView(customWeightView);
-            
+
             singleChoiceViewStateController.addView(customWeightView);
 
             if(index==0){
