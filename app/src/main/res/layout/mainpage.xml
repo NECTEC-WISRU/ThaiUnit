@@ -43,7 +43,7 @@
             android:layout_gravity="center_horizontal|top"
             android:gravity="center_vertical"
             android:singleLine="true"
-            android:text="แอพกระสอบข้าว"
+            android:text="กระสอบข้าว"
             android:textColor="@color/white"
             android:textSize="@dimen/text_body_big" />
 
