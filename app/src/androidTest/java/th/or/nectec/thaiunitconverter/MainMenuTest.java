@@ -19,7 +19,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  * Created by N. Choatravee on 14/10/2558.
  */
 
-public class KrasopLaunchTest {
+public class MainMenuTest {
     public ActivityTestRule<Main> mActivityTestRule = new ActivityTestRule<>(Main.class);
     Main mActivity;
 
