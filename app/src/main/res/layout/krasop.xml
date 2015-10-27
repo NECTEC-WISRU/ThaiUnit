@@ -182,6 +182,7 @@
             android:id="@+id/finish_calculate"
             android:layout_gravity="center_horizontal"
             android:textSize="@dimen/text_body"
+            android:background="@color/orange1"
             android:visibility="visible"/>
 
     </LinearLayout>
