@@ -15,9 +15,11 @@
     <color name="orange1">#ff5900</color>
     <color name="orange2">#ff9625</color>
     <color name="light_orange">#5efd6e01</color>
+    <color name="deep_orange_500">#ff5722</color>
     <color name="orange_yellow">#fdbf02</color>
     <color name="yellow">#fcf802</color>
-    <color name="light_yellow">#f2fa7f</color>
+    <color name="light_yellow">#fae67f</color>
+    <color name="orange_a200">#ffab40</color>
 
     <color name="dark_green">#177b01</color>
     <color name="green1">#29ff03</color>

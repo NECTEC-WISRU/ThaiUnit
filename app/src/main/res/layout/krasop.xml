@@ -31,7 +31,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -175,15 +177,14 @@
             android:textSize="50dp"
             android:textColor="@color/red1" />
 
-        <Button
+        <com.gc.materialdesign.views.ButtonRectangle
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#2db272"
             android:text="เสร็จสิ้นการคำนวณ"
-            android:id="@+id/finish_calculate"
-            android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/text_body"
-            android:background="@color/orange1"
-            android:visibility="visible"/>
+            android:textSize="12sp"
+            android:id="@+id/finish_calculate"/>
+
 
     </LinearLayout>
 

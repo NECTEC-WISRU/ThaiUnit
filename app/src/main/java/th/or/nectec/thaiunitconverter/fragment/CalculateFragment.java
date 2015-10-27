@@ -28,6 +28,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gc.materialdesign.views.ButtonRectangle;
+
 import java.text.DecimalFormat;
 
 import th.or.nectec.thaiunitconverter.R;
@@ -48,7 +50,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     double[] defaultUnitFactor;
 
     private Button wetRiceButton;
-    private Button finishCalculateButton;
+    private ButtonRectangle finishCalculateButton;
     private Button plusButton;
     private Button minusButton;
 
@@ -121,7 +123,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         plusButton = (Button) rootView.findViewById(R.id.plus);
         minusButton = (Button) rootView.findViewById(R.id.minus);
 
-        finishCalculateButton = (Button) rootView.findViewById(R.id.finish_calculate);
+        finishCalculateButton = (ButtonRectangle) rootView.findViewById(R.id.finish_calculate);
         plusPercentButton = (Button) rootView.findViewById(R.id.plus_percent);
         minusPercentButton = (Button) rootView.findViewById(R.id.minus_percent);
 
