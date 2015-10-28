@@ -1,8 +1,8 @@
 package th.or.nectec.thaiunitconverter.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -34,7 +34,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
-                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")) {
                     calculateIntent.putExtra("is_launch_from_other", true);
                 }
                 calculateIntent.addCategory("unitconverter.intent.category.KRASOP");
@@ -46,7 +46,7 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent calculateIntent = new Intent("unitconverter.intent.action.CALCULATE");
-                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")){
+                if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE")) {
                     calculateIntent.putExtra("is_launch_from_other", true);
                 }
                 calculateIntent.addCategory("unitconverter.intent.category.TUNG");
@@ -55,12 +55,11 @@ public class Main extends AppCompatActivity {
         });
     }
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE") && resultCode==RESULT_OK) {
+        if (getIntent().getAction().equals("unitconverter.intent.action.CALCULATE_DRY_RICE") && resultCode == RESULT_OK) {
             setResult(RESULT_OK, data);
             finish();
         }

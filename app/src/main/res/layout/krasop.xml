@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:orientation="vertical"
     android:weightSum="1"
-    android:inputType="number"
-    >
+    android:inputType="number">
 
 
     <TextView
@@ -31,7 +31,9 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -57,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:text="อื่นๆ"
-                    android:textColor="@color/dark_blue"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/text_body_big"
                     android:gravity="clip_vertical|center_horizontal"/>
             </LinearLayout>
@@ -85,15 +87,30 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:weightSum="1"
-        android:layout_weight="0.08">
+        android:layout_weight="0.08"
+        android:paddingBottom="20sp">
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:id="@+id/minus"
-            android:textSize="@dimen/text_body"/>
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp">
+
+            <com.gc.materialdesign.views.ButtonRectangle
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:id="@+id/minus"
+                android:background="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:text="-"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:gravity="center" />
+        </FrameLayout>
 
         <EditText
             android:layout_width="105dp"
@@ -104,18 +121,33 @@
             android:layout_gravity="center"
             android:textSize="@dimen/text_body_big"
             android:numeric="decimal"
-            android:gravity="center"
+            android:gravity="top|center"
             android:imeOptions="actionDone"
             android:text="0"
             />
 
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:id="@+id/plus"
-            android:textSize="@dimen/text_body_big"/>
+        <FrameLayout
+            android:layout_width="48dp"
+            android:layout_height="48dp">
+
+            <com.gc.materialdesign.views.ButtonRectangle
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:id="@+id/plus"
+                android:background="@color/black"
+                android:textSize="14sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:text="+"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textSize="40sp"
+                android:gravity="center" />
+
+        </FrameLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -127,13 +159,14 @@
             android:textColor="@color/black" />
     </LinearLayout>
 
-    <Button
+    <com.gc.materialdesign.views.ButtonRectangle
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="คำนวณน้ำหนักข้าวสด"
-        android:id="@+id/calculate_wet_button"
+        android:background="@color/orange1"
+        android:text="คำนวณ"
+        android:textSize="12sp"
         android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/text_body"/>
+        android:id="@+id/calculate_wet_button"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -142,7 +175,8 @@
         android:layout_gravity="left|center"
         android:gravity="center_vertical|center_horizontal"
         android:visibility="gone"
-        android:id="@+id/wet_result_layout">
+        android:id="@+id/wet_result_layout"
+        android:paddingBottom="20sp">
 
         <TextView
             android:layout_width="match_parent"
@@ -174,14 +208,14 @@
             android:textSize="50dp"
             android:textColor="@color/red1" />
 
-        <Button
+        <com.gc.materialdesign.views.ButtonRectangle
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="คำนวณน้ำหนักร่วมกับความชื้น"
-            android:id="@+id/calculate_dry_button"
-            android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/text_body"
-            android:visibility="visible"/>
+            android:background="#2db272"
+            android:text="เสร็จสิ้นการคำนวณ"
+            android:textSize="12sp"
+            android:id="@+id/finish_calculate"/>
+
 
     </LinearLayout>
 
@@ -210,13 +244,27 @@
             android:layout_height="wrap_content"
             android:gravity="center">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:id="@+id/minus_percent"
-                android:textSize="@dimen/text_body"/>
+            <FrameLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp">
+
+                <com.gc.materialdesign.views.ButtonRectangle
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:id="@+id/minus_percent"
+                    android:background="@color/black"
+                    android:textSize="14sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="-"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    android:gravity="center" />
+            </FrameLayout>
 
             <EditText
                 android:layout_width="105dp"
@@ -231,22 +279,35 @@
                 android:text="0"
                 />
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:id="@+id/plus_percent"
-                android:textSize="@dimen/text_body_big"/>
+            <FrameLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp">
+
+                <com.gc.materialdesign.views.ButtonRectangle
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:id="@+id/plus_percent"
+                    android:background="@color/black"
+                    android:textSize="14sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:text="+"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    android:gravity="center" />
+            </FrameLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="เปอร์เซนต์"
-                android:id="@+id/textView8"
                 android:textSize="@dimen/text_body_big"
                 android:textColor="@color/black"
-                android:layout_marginLeft="@dimen/layout_marginLeft" />
+                android:layout_marginLeft="10sp" />
 
         </LinearLayout>
 

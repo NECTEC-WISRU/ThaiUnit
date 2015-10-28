@@ -1,12 +1,6 @@
 package th.or.nectec.thaiunitconverter.view;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -20,6 +14,8 @@ public class SingleChoiceViewStateController {
 
     ArrayList<CustomCheckedView> customWeightViewArrayList = new ArrayList<>();
     int currentCheckItemPosition = -1; //ไม่มีค่า ค่าตัวแรกคือ 0
+
+    OnCheckedChangeListener checkChangedListener;
 
     public void addView(CustomCheckedView view){
         view.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +34,7 @@ public class SingleChoiceViewStateController {
             if(eachView.equals(v)){
                 currentCheckItemPosition = i;
                 eachView.setChecked(true);
+                checkChangedListener.onCheckChanged(v);
             }else{
                 eachView.setChecked(false);
             }
@@ -55,21 +52,11 @@ public class SingleChoiceViewStateController {
         void setChecked(boolean isChecked);
     }
 
-    //TODO savestate ของ view
-//    @Override
-//    public Parcelable onSaveInstanceState() {
-//        super.onSaveInstanceState();
-//        Bundle bundle = new Bundle();
-//        // Save current View's state here
-//        bundle.putInt("checkedPosition", currentCheckItemPosition);
-//        bundle.putParcelableArrayList("customWeightViewArray", customWeightViewArrayList);
-//        return bundle;
-//    }
-//
-//    @Override
-//    public void onRestoreInstanceState(Parcelable state) {
-//        super.onRestoreInstanceState(state);
-//        // Restore View's state here
-//    }
+    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener){
+        checkChangedListener = onCheckedChangeListener;
+    }
 
+    public interface OnCheckedChangeListener {
+        void onCheckChanged(View v);
+    }
 }

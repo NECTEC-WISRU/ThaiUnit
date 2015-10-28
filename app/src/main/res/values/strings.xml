@@ -29,5 +29,6 @@
 
     <string name="minimum_percent">ค่าความชื้นมาตราฐานเท่ากับ %1$s</string>
     <string name="please_define_humid_percent">กรุณากำหนดเปอร์เซนต์ความชื้น</string>
+    <string name="show_dry_result">แสดงการคำนวณเมื่อหักค่าความชื้นแล้ว</string>
 
 </resources>

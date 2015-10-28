@@ -19,13 +19,13 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  * Created by N. Choatravee on 14/10/2558.
  */
 
-public class KrasopLaunchTest {
+public class MainMenuTest {
     public ActivityTestRule<Main> mActivityTestRule = new ActivityTestRule<>(Main.class);
     Main mActivity;
 
     @Before
     public void setUp(){
-        Intent intent = new Intent();
+        Intent intent = new Intent("android.intent.action.MAIN");
         mActivity = mActivityTestRule.launchActivity(intent);
     }
 

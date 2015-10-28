@@ -19,11 +19,12 @@
     <dimen name="layout_marginRight">10dp</dimen>
     <dimen name="layout_marginLeft">10dp</dimen>
 
-    <dimen name="text_body">25dp</dimen>
-    <dimen name="text_body_big">30dp</dimen>
-    <dimen name="text_body_choice">23dp</dimen>
-    <dimen name="text_body_answer">30dp</dimen>
-    <dimen name="text_body__button">25dp</dimen>
+    <dimen name="text_body">25sp</dimen>
+    <dimen name="text_body_title">50sp</dimen>
+    <dimen name="text_body_big">30sp</dimen>
+    <dimen name="text_body_choice">23sp</dimen>
+    <dimen name="text_body_answer">30sp</dimen>
+    <dimen name="text_body__button">25sp</dimen>
 
     <dimen name="layout_table_row_height">100dp</dimen>
     <dimen name="text_button_width">370dp</dimen>
