@@ -39,20 +39,6 @@ public class CalculateActivity extends AppCompatActivity {
         // Adapter ตัวแรก
         ArrayAdapter<String> adapterThai = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_dropdown_item, unitArray);
-        /*spinner.setAdapter(adapterThai);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(CalculateActivity.this, unitArray[position], Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });*/
 
         Set<String> intentCategories = getIntent().getCategories();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

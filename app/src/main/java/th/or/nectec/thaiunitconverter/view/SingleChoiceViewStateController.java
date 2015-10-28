@@ -52,23 +52,6 @@ public class SingleChoiceViewStateController {
         void setChecked(boolean isChecked);
     }
 
-    //TODO savestate ของ view
-//    @Override
-//    public Parcelable onSaveInstanceState() {
-//        super.onSaveInstanceState();
-//        Bundle bundle = new Bundle();
-//        // Save current View's state here
-//        bundle.putInt("checkedPosition", currentCheckItemPosition);
-//        bundle.putParcelableArrayList("customWeightViewArray", customWeightViewArrayList);
-//        return bundle;
-//    }
-//
-//    @Override
-//    public void onRestoreInstanceState(Parcelable state) {
-//        super.onRestoreInstanceState(state);
-//        // Restore View's state here
-//    }
-
     public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener){
         checkChangedListener = onCheckedChangeListener;
     }

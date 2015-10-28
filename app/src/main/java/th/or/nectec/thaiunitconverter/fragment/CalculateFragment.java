@@ -2,7 +2,6 @@ package th.or.nectec.thaiunitconverter.fragment;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.support.annotation.DrawableRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -28,7 +26,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gc.materialdesign.views.ButtonFloatSmall;
 import com.gc.materialdesign.views.ButtonRectangle;
 
 import java.text.DecimalFormat;
@@ -412,13 +409,6 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
         alert.setView(R.layout.add_custom_unit_factor);
         alert.setTitle("ใส่ขนาดที่ต้องการ");
-        /*final
-        edittext.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        edittext.setId(R.id.custom_unit_factor);
-        alert.setTitle("ใส่ขนาดที่ต้องการ");
-        alert.setView(edittext);
-        alert.setPositiveButton("ตกลง", null);
-        alert.setNegativeButton("ยกเลิก", null);*/
 
         final AlertDialog customUnitFactorDialog = alert.create();
         customUnitFactorDialog.show();
@@ -480,15 +470,12 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
         switch ((int) unitFactor) {
             case 30:
-                //unitFactor = 30;
                 wetRiceValue = ThaiUnitCalculator.calculateKrasobpuiToKg(riceQuantityValue);
                 break;
             case 50:
-                //unitFactor = 50;
                 wetRiceValue = ThaiUnitCalculator.calculateKrasobtonnToKg(riceQuantityValue);
                 break;
             case 100:
-                //unitFactor = 100;
                 wetRiceValue = ThaiUnitCalculator.calculateKrasobToKg(riceQuantityValue);
                 break;
             default:
@@ -497,7 +484,5 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         }
         return wetRiceValue;
     }
-
-
 }
 

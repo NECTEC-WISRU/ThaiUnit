@@ -78,7 +78,7 @@ public class CustomWeightView extends RelativeLayout implements SingleChoiceView
     public void setChecked(boolean checked) {
         this.checked = checked;
         if (checked) {
-            this.setBackground(getResources().getDrawable(R.drawable.circle_background));
+            this.setBackgroundDrawable(getResources().getDrawable(R.drawable.circle_background));
         } else {
             this.setBackgroundColor(Color.TRANSPARENT);
         }
