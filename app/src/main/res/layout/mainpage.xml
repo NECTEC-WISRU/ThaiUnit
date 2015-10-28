@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:gravity="fill_vertical"
-    android:orientation="vertical"
-    android:weightSum="1">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="fill_vertical"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <ImageView
-            android:id="@+id/imageView3"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="172dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/rice" />
+            android:layout_height="280dp"
+            android:background="#8BC34A"
+            android:orientation="horizontal"
+            android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:src="@drawable/rice_seed" />
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_vertical"
+                android:padding="20dp"
+                android:src="@drawable/rice_seed" />
 
-        <TextView
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="left"
-            android:text="@string/app_version"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_body_big" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="236dp"
-            android:layout_height="89dp"
-            android:layout_gravity="center_horizontal|top"
-            android:gravity="center_vertical"
-            android:singleLine="true"
-            android:text="กระสอบข้าว"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_body_big" />
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="กระสอบข้าว"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_body_title" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="left"
+                    android:text="@string/app_version"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_body_big" />
+            </LinearLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -53,30 +63,23 @@
             android:layout_gravity="bottom"
             android:background="@android:color/black" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/layout_marginBottom"
+            android:layout_marginTop="@dimen/layout_marginTop"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="เลือกหน่วยคำนวณ"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_body" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/layout_marginBottom"
-        android:layout_marginTop="@dimen/layout_marginTop"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="เลือกหน่วยคำนวณ"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_body" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="@dimen/layout_marginLeft"
-        android:layout_marginRight="@dimen/layout_marginRight"
-        android:background="@android:color/black" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/layout_marginLeft"
+            android:layout_marginRight="@dimen/layout_marginRight"
+            android:background="@android:color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,8 +105,8 @@
                     android:layout_width="@dimen/layout_image_width"
                     android:layout_height="match_parent"
                     android:layout_gravity="bottom|center"
-                    android:src="@drawable/krasop"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/krasop" />
 
                 <TextView
                     android:id="@+id/textView"
@@ -119,10 +122,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/black"
                 android:layout_marginLeft="@dimen/layout_marginLeft"
                 android:layout_marginRight="@dimen/layout_marginRight"
-                />
+                android:background="@android:color/black" />
 
             <LinearLayout
                 android:id="@+id/tungButton"
@@ -159,10 +161,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/black"
                 android:layout_marginLeft="@dimen/layout_marginLeft"
                 android:layout_marginRight="@dimen/layout_marginRight"
-                />
+                android:background="@android:color/black" />
 
             <LinearLayout
                 android:id="@+id/aumButton"
@@ -197,10 +198,9 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/black"
                 android:layout_marginLeft="@dimen/layout_marginLeft"
                 android:layout_marginRight="@dimen/layout_marginRight"
-                />
+                android:background="@android:color/black" />
 
             <LinearLayout
                 android:id="@+id/peepButton"
@@ -236,11 +236,10 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@android:color/black"
                 android:layout_marginLeft="@dimen/layout_marginLeft"
                 android:layout_marginRight="@dimen/layout_marginRight"
-                android:visibility="gone"
-                />
+                android:background="@android:color/black"
+                android:visibility="gone" />
 
             <LinearLayout
                 android:id="@+id/kwianButton"
@@ -272,14 +271,16 @@
                     android:textSize="@dimen/text_body_big" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/app_version"
-        android:textColor="@color/white"
-        android:gravity="right" />
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="@string/app_version"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+</ScrollView>
+

@@ -18,6 +18,7 @@
     <dimen name="layout_marginLeft">20dp</dimen>
 
     <dimen name="text_body">25sp</dimen>
+    <dimen name="text_body_title">50sp</dimen>
     <dimen name="text_body_big">30sp</dimen>
     <dimen name="text_body_choice">17sp</dimen>
     <dimen name="text_body_answer">30sp</dimen>
