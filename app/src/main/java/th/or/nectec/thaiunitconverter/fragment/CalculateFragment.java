@@ -410,45 +410,51 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
     private void showCustomWeightDialog() {
         final AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-        final EditText edittext = new EditText(getActivity());
+        alert.setView(R.layout.add_custom_unit_factor);
+        alert.setTitle("ใส่ขนาดที่ต้องการ");
+        /*final
         edittext.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         edittext.setId(R.id.custom_unit_factor);
         alert.setTitle("ใส่ขนาดที่ต้องการ");
         alert.setView(edittext);
         alert.setPositiveButton("ตกลง", null);
-        alert.setNegativeButton("ยกเลิก", null);
+        alert.setNegativeButton("ยกเลิก", null);*/
 
-        final AlertDialog customWeightDialog = alert.create();
-
-        customWeightDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+        final AlertDialog customUnitFactorDialog = alert.create();
+        customUnitFactorDialog.show();
+        final EditText edittext = (EditText) customUnitFactorDialog.findViewById(R.id.custom_unit_factor);
+        Button ok = (Button) customUnitFactorDialog.findViewById(R.id.ok);
+        ok.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onShow(DialogInterface dialogInterface) {
-                Button b = customWeightDialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                b.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+            public void onClick(View view) {
 
-                        String customSizeStr = edittext.getText().toString();
-                        if (TextUtils.isEmpty(customSizeStr)) {
-                            Toast.makeText(getActivity(), String.format(getString(R.string.please_define_unit_factor), unitStr), Toast.LENGTH_SHORT).show();
-                        } else if (customSizeStr.equals("0")) {
-                            Toast.makeText(getActivity(), String.format(getString(R.string.please_define_unit_factor), unitStr), Toast.LENGTH_SHORT).show();
-                        } else {
-                            unitFactor = Double.valueOf(customSizeStr);
-                            CustomWeightView customWeightView = new CustomWeightView(getActivity());
-                            customWeightView.setCustomWeightInfoByResource(unitIcon, unitFactor);
-                            customWeightLayout.addView(customWeightView);
-                            singleChoiceViewStateController.addView(customWeightView);
-                            singleChoiceViewStateController.setCheckedItem(customWeightView);
+                String customSizeStr = edittext.getText().toString();
+                if (TextUtils.isEmpty(customSizeStr)) {
+                    Toast.makeText(getActivity(), String.format(getString(R.string.please_define_unit_factor), unitStr), Toast.LENGTH_SHORT).show();
+                } else if (customSizeStr.equals("0")) {
+                    Toast.makeText(getActivity(), String.format(getString(R.string.please_define_unit_factor), unitStr), Toast.LENGTH_SHORT).show();
+                } else {
+                    unitFactor = Double.valueOf(customSizeStr);
+                    CustomWeightView customWeightView = new CustomWeightView(getActivity());
+                    customWeightView.setCustomWeightInfoByResource(unitIcon, unitFactor);
+                    customWeightLayout.addView(customWeightView);
+                    singleChoiceViewStateController.addView(customWeightView);
+                    singleChoiceViewStateController.setCheckedItem(customWeightView);
 
-                            customWeightDialog.dismiss();
-                        }
-                    }
-                });
+                    customUnitFactorDialog.dismiss();
+                }
             }
         });
 
-        customWeightDialog.show();
+        Button cancel = (Button) customUnitFactorDialog.findViewById(R.id.cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                customUnitFactorDialog.dismiss();
+            }
+
+        });
     }
 
     private void hideSoftKeyboard() {
