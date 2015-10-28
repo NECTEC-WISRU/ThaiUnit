@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gc.materialdesign.views.ButtonFloatSmall;
 import com.gc.materialdesign.views.ButtonRectangle;
 
 import java.text.DecimalFormat;
@@ -53,8 +54,9 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     private ButtonRectangle finishCalculateButton;
     private ButtonRectangle plusButton;
     private ButtonRectangle minusButton;
+    //private ButtonFloatSmall minusButton;
 
-    private Button plusPercentButton, minusPercentButton;
+    private ButtonRectangle plusPercentButton, minusPercentButton;
 
     private EditText riceQuantity;
     private EditText humidPercentView;
@@ -122,10 +124,11 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         wetRiceButton = (ButtonRectangle) rootView.findViewById(R.id.calculate_wet_button);
         plusButton = (ButtonRectangle) rootView.findViewById(R.id.plus);
         minusButton = (ButtonRectangle) rootView.findViewById(R.id.minus);
+        // minusButton = (ButtonFloatSmall) rootView.findViewById(R.id.minus);
 
         finishCalculateButton = (ButtonRectangle) rootView.findViewById(R.id.finish_calculate);
-        plusPercentButton = (Button) rootView.findViewById(R.id.plus_percent);
-        minusPercentButton = (Button) rootView.findViewById(R.id.minus_percent);
+        plusPercentButton = (ButtonRectangle) rootView.findViewById(R.id.plus_percent);
+        minusPercentButton = (ButtonRectangle) rootView.findViewById(R.id.minus_percent);
 
         moreOption = (LinearLayout) rootView.findViewById(R.id.more_option);
         customWeightLayout = (LinearLayout) rootView.findViewById(R.id.custom_weight_layout);
@@ -142,7 +145,13 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         plusPercentButton.setOnClickListener(this);
         minusPercentButton.setOnClickListener(this);
 
+        minusButton.setRippleSpeed(30);
+        plusButton.setRippleSpeed(30);
+        wetRiceButton.setRippleSpeed(30);
 
+        minusPercentButton.setRippleSpeed(30);
+        plusPercentButton.setRippleSpeed(30);
+        finishCalculateButton.setRippleSpeed(30);
 
 
         boolean isLaunchFromOther = getActivity().getIntent().getBooleanExtra("is_launch_from_other", false);
@@ -178,8 +187,6 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
                 hideResultFragment();
             }
         });
-
-
 
 
         humidPercentView.setText(String.valueOf(STANDARD_PERCENT));
@@ -226,7 +233,7 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
         });
     }
 
-    private void hideResultFragment(){
+    private void hideResultFragment() {
         wetResultLayout.setVisibility(View.GONE);
         dryResultLayout.setVisibility(View.GONE);
         isShowDryOptionVisible = true;
@@ -259,16 +266,15 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
     }
 
 
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.dry_visibility_menu, menu);
 
-        if (isShowDryOptionVisible){
+        if (isShowDryOptionVisible) {
             menu.getItem(0).setVisible(true);
             menu.getItem(1).setVisible(false);
-        }else{
+        } else {
             menu.getItem(0).setVisible(false);
             menu.getItem(1).setVisible(true);
         }
@@ -277,13 +283,13 @@ public class CalculateFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_show_dry_calculate :
+        switch (item.getItemId()) {
+            case R.id.action_show_dry_calculate:
                 dryResultLayout.setVisibility(View.VISIBLE);
                 calculateAndShowDryResult();
                 isShowDryOptionVisible = false;
                 break;
-            case R.id.action_hide_dry_calculate :
+            case R.id.action_hide_dry_calculate:
                 dryResultLayout.setVisibility(View.GONE);
                 isShowDryOptionVisible = true;
 
